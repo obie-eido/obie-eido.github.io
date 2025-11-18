@@ -15,9 +15,7 @@
       --text-muted: #b4b4b4;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     html, body {
       margin: 0;
@@ -36,11 +34,9 @@
       text-decoration: none;
     }
 
-    .page-padding {
-      padding: 24px 0 32px;
-    }
+    .page-padding { padding: 24px 0 32px; }
 
-    /* HERO / HOME SECTION */
+    /* HERO */
 
     .hero {
       min-height: 100vh;
@@ -53,7 +49,7 @@
     }
 
     .hero-header {
-      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: "Source Code Pro", monospace;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.22em;
@@ -62,50 +58,53 @@
       padding-inline: 24px;
     }
 
-    .hero-name {
-      margin-right: 12px;
-      white-space: nowrap;
-    }
+    .hero-name { margin-right: 12px; white-space: nowrap; }
+    .hero-tag { margin-left: auto; margin-right: 80px; white-space: nowrap; }
+    .hero-year { margin-right: 24px; white-space: nowrap; }
 
-    .hero-tag {
-      margin-left: auto;
-      margin-right: 80px;
-      white-space: nowrap;
-    }
-
-    .hero-year {
-      margin-right: 24px;
-      white-space: nowrap;
-    }
+    /* Ticker */
 
     .hero-middle {
-      flex: 1;
       display: flex;
       align-items: center;
       padding-inline: 24px;
+      height: 140px;
     }
 
-    .hero-middle-inner {
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: relative;
+    }
+
+    .ticker__track {
+      display: inline-flex;
       gap: 40px;
-      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      animation: tickerScroll 22s linear infinite;
+      font-family: "Source Code Pro", monospace;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.24em;
-      text-align: left;
       white-space: nowrap;
     }
+
+    .ticker__track span {
+      white-space: nowrap;
+    }
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* BOTTOM HERO */
 
     .hero-bottom {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 80px; /* more space between left text and slideshow */
+      gap: 80px;
       flex-wrap: nowrap;
       padding-inline: 24px;
       margin-bottom: 16px;
@@ -120,7 +119,7 @@
     }
 
     .hero-description-title {
-      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: "Source Code Pro", monospace;
       text-transform: uppercase;
       letter-spacing: 0.2em;
       font-size: 11px;
@@ -132,7 +131,7 @@
 
     .work-strip-wrapper {
       position: relative;
-      flex: 0 0 55%; /* slideshow smaller */
+      flex: 0 0 55%;
       min-width: 260px;
     }
 
@@ -146,9 +145,7 @@
       scroll-behavior: smooth;
     }
 
-    .work-strip::-webkit-scrollbar {
-      display: none;
-    }
+    .work-strip::-webkit-scrollbar { display: none; }
 
     .work-item {
       scroll-snap-align: start;
@@ -158,7 +155,7 @@
       overflow: visible;
       border: none;
       color: var(--text-muted);
-      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: "Source Code Pro", monospace;
     }
 
     .work-label {
@@ -195,13 +192,8 @@
       transition: opacity 0.25s ease-in-out;
     }
 
-    .work-next-arrow {
-      right: 24px;
-    }
-
-    .work-prev-arrow {
-      left: 24px;
-    }
+    .work-next-arrow { right: 24px; }
+    .work-prev-arrow { left: 24px; }
 
     .work-strip-wrapper:hover .work-next-arrow,
     .work-strip-wrapper:hover .work-prev-arrow {
@@ -227,7 +219,7 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* ABOUT / RESUME SECTION */
+    /* ABOUT */
 
     .about {
       background: var(--bg-light);
@@ -245,7 +237,7 @@
     }
 
     .about-heading {
-      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-family: "Source Code Pro", monospace;
       font-size: 18px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -267,33 +259,7 @@
       margin-bottom: 24px;
     }
 
-    .resume-block {
-      border-top: 1px solid #dddddd;
-      padding-top: 18px;
-      margin-top: 4px;
-      font-size: 13px;
-    }
-
-    .resume-item {
-      margin-bottom: 16px;
-    }
-
-    .resume-title {
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    .resume-meta {
-      font-size: 12px;
-      color: #777777;
-      margin-bottom: 6px;
-    }
-
-    .resume-text {
-      font-size: 13px;
-      color: #444444;
-    }
-
+    .resume-block,
     .education-block {
       border-top: 1px solid #dddddd;
       padding-top: 18px;
@@ -301,21 +267,25 @@
       font-size: 13px;
     }
 
+    .resume-item,
     .education-item {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
+    .resume-title,
     .education-title {
       font-weight: 600;
       font-size: 13px;
     }
 
+    .resume-meta,
     .education-meta {
       font-size: 12px;
       color: #777777;
       margin-bottom: 4px;
     }
 
+    .resume-text,
     .education-text {
       font-size: 13px;
       color: #444444;
@@ -330,7 +300,6 @@
     .contact-block a {
       color: #111111;
       text-decoration: underline;
-      text-decoration-thickness: 1px;
       text-underline-offset: 3px;
     }
 
@@ -348,27 +317,15 @@
       align-items: center;
     }
 
-    .social-logo {
-      width: 32px;
-      height: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .social-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+    .social-logo { width: 32px; height: 32px; }
+    .social-logo img { width: 100%; height: 100%; object-fit: contain; }
 
     .about-photo {
       width: 100%;
       max-width: 360px;
       margin-left: auto;
       border-radius: 12px;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 3/4;
       object-fit: cover;
       border: 1px solid #d6d6d6;
       background: #dddddd;
@@ -377,9 +334,9 @@
     .about-photo-caption {
       font-size: 11px;
       color: #888888;
-      margin-top: 8px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      margin-top: 8px;
     }
 
     @media (max-width: 900px) {
@@ -387,20 +344,16 @@
         flex-direction: column;
         align-items: flex-start;
       }
-
       .hero-description {
         flex: 0 0 100%;
         max-width: 100%;
       }
-
       .work-strip-wrapper {
         flex: 0 0 100%;
       }
-
       .about-inner {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
-
       .about-photo {
         margin: 16px 0 0 0;
       }
@@ -411,37 +364,17 @@
         gap: 24px;
         font-size: 11px;
       }
-
-      .hero-header {
-        padding-inline: 16px;
-      }
-
-      .hero-year {
-        margin-right: 16px;
-      }
-
-      .hero-bottom {
-        padding-inline: 16px;
-        gap: 40px;
-      }
-
-      .about {
-        padding-inline: 16px;
-      }
-
-      .work-next-arrow {
-        right: 16px;
-      }
-
-      .work-prev-arrow {
-        left: 16px;
-      }
+      .hero-header { padding-inline: 16px; }
+      .hero-bottom { padding-inline: 16px; gap: 40px; }
+      .work-next-arrow { right: 16px; }
+      .work-prev-arrow { left: 16px; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- HOME / HERO -->
+  <!-- HERO SECTION -->
   <section class="hero page-padding" id="top">
     <header class="hero-header">
       <span class="hero-name">Obie Brown</span>
@@ -449,97 +382,96 @@
       <span class="hero-year">2026</span>
     </header>
 
-<div class="hero-middle">
-  <div class="ticker">
-    <div class="ticker__track">
-      <span>Brand Systems</span>
-      <span>Visual Experiments</span>
-      <span>Digital Storytelling</span>
-      <span>Interface Narratives</span>
-      <span>Speculative Aesthetics</span>
+    <div class="hero-middle">
+      <div class="ticker">
+        <div class="ticker__track">
+          <span>Brand Systems</span>
+          <span>Visual Experiments</span>
+          <span>Digital Storytelling</span>
+          <span>Interface Narratives</span>
+          <span>Speculative Aesthetics</span>
 
-      <!-- duplicate for seamless loop -->
-      <span>Brand Systems</span>
-      <span>Visual Experiments</span>
-      <span>Digital Storytelling</span>
-      <span>Interface Narratives</span>
-      <span>Speculative Aesthetics</span>
+          <!-- duplicate loop -->
+          <span>Brand Systems</span>
+          <span>Visual Experiments</span>
+          <span>Digital Storytelling</span>
+          <span>Interface Narratives</span>
+          <span>Speculative Aesthetics</span>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
     <div class="hero-bottom">
       <div class="hero-description">
         <div class="hero-description-title">Marketing and Design</div>
         <p>
           Placeholder bio text for Obie Brown. This line explains a focus on
-          strategy, visual identity, and concept driven campaigns that live at
-          the edge of fashion, culture, and technology. Add a sharper personal
-          description here once your portfolio is ready.
+          strategy, visual identity, and concept driven campaigns that live
+          where culture, futurism, and aesthetics intersect.
         </p>
       </div>
 
       <div class="work-strip-wrapper">
-        <button class="work-prev-arrow" type="button" aria-label="Previous project"></button>
-
+        <button class="work-prev-arrow" type="button" aria-label="Previous"></button>
         <div class="work-strip">
-          <!-- Use your own AI generated artwork here later -->
+
           <a class="work-item" href="/404.html">
             <div class="work-label">01</div>
-            <img src="https://picsum.photos/seed/ai-project-01/480/320" alt="AI generated project 01" />
+            <img src="https://picsum.photos/seed/ai-project-01/480/320" />
           </a>
 
           <a class="work-item" href="/404.html">
             <div class="work-label">02</div>
-            <img src="https://picsum.photos/seed/ai-project-02/480/320" alt="AI generated project 02" />
+            <img src="https://picsum.photos/seed/ai-project-02/480/320" />
           </a>
 
           <a class="work-item" href="/404.html">
             <div class="work-label">03</div>
-            <img src="https://picsum.photos/seed/ai-project-03/480/320" alt="AI generated project 03" />
+            <img src="https://picsum.photos/seed/ai-project-03/480/320" />
           </a>
 
           <a class="work-item" href="/404.html">
             <div class="work-label">04</div>
-            <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="AI generated project 04" />
+            <img src="https://picsum.photos/seed/ai-project-04/480/320" />
           </a>
-        </div>
 
-        <button class="work-next-arrow" type="button" aria-label="Next project"></button>
+        </div>
+        <button class="work-next-arrow" type="button" aria-label="Next"></button>
       </div>
     </div>
+
   </section>
 
-  <!-- ABOUT / RESUME -->
+  <!-- ABOUT / RESUME SECTION -->
   <section class="about" id="about">
     <div class="about-inner">
       <div>
         <div class="about-subtitle">Profile</div>
         <h2 class="about-heading">About Obie Brown</h2>
+
         <p class="about-body">
-          Placeholder copy for an extended introduction. Describe your approach
-          to marketing and design, how you move between strategy and execution,
-          and the kinds of brands or clients you enjoy working with. Touch on
-          your interest in fashion, culture, and technology driven storytelling.
+          Placeholder copy for your introduction. You can explain how you work
+          across marketing and design, how your aesthetic is shaped by culture,
+          futurism, and storytelling, and how your work blends clarity with
+          experimentation.
         </p>
 
         <div class="resume-block">
           <div class="resume-item">
             <div class="resume-title">Role Title Here</div>
-            <div class="resume-meta">Company Name: 2023 – Present</div>
+            <div class="resume-meta">Company Name — 2023–Present</div>
             <div class="resume-text">
-              Short bullet style description of what you do on a daily basis,
-              key achievements, and measurable impact. Replace this placeholder
-              with real experience items.
+              Short bullet-style description of what you do, the impact you create,
+              and the type of work that defines your role.
             </div>
           </div>
+
           <div class="resume-item">
             <div class="resume-title">Previous Role Title</div>
-            <div class="resume-meta">Studio or Brand: 2020 – 2023</div>
+            <div class="resume-meta">Studio or Brand — 2020–2023</div>
             <div class="resume-text">
-              Another block to outline responsibilities in marketing and design,
-              such as building campaigns, leading shoots, or developing brand
-              systems across digital touchpoints.
+              Describe your responsibilities and accomplishments in marketing,
+              campaigns, digital design, or branding.
             </div>
           </div>
         </div>
@@ -547,18 +479,19 @@
         <div class="education-block">
           <div class="education-item">
             <div class="education-title">Degree Name Here</div>
-            <div class="education-meta">School or University, 2018 – 2022</div>
+            <div class="education-meta">School or University — 2018–2022</div>
             <div class="education-text">
-              Brief description of focus areas in marketing and design, key studio
-              projects, or research themes you want to highlight.
+              Describe your focus areas or major projects that connect to your
+              creative practice.
             </div>
           </div>
+
           <div class="education-item">
             <div class="education-title">Additional Coursework</div>
-            <div class="education-meta">Workshops, Online Programs</div>
+            <div class="education-meta">Workshops & Online Programs</div>
             <div class="education-text">
-              Placeholder text for short courses, certificates, or workshops that
-              connect directly to your visual and strategic work.
+              Placeholder text for certificates, short courses, or creative
+              workshops.
             </div>
           </div>
         </div>
@@ -570,27 +503,18 @@
 
           <div class="social-row">
             <span class="contact-label">Social</span>
-            <!-- Replace src values with your own logo files -->
-            <a class="social-logo" href="#">
-              <img src="instagram-logo.svg" alt="Instagram logo" />
-            </a>
-            <a class="social-logo" href="#">
-              <img src="behance-logo.svg" alt="Behance logo" />
-            </a>
-            <a class="social-logo" href="#">
-              <img src="linkedin-logo.svg" alt="LinkedIn logo" />
-            </a>
+            <a class="social-logo" href="#"><img src="instagram-logo.svg" /></a>
+            <a class="social-logo" href="#"><img src="behance-logo.svg" /></a>
+            <a class="social-logo" href="#"><img src="linkedin-logo.svg" /></a>
           </div>
         </div>
       </div>
 
       <div>
-        <!-- Replace src with your own portrait later -->
-        <img class="about-photo" src="https://picsum.photos/seed/portrait-ai/600/800" alt="Portrait placeholder" />
-        <div class="about-photo-caption">
-          Portrait placeholder: replace with your own image
-        </div>
+        <img class="about-photo" src="https://picsum.photos/seed/portrait-ai/600/800" />
+        <div class="about-photo-caption">Portrait placeholder — replace with your image</div>
       </div>
+
     </div>
   </section>
 
@@ -607,24 +531,18 @@
         if (!item) return 260;
         const style = window.getComputedStyle(strip);
         const gap = parseFloat(style.columnGap || style.gap || "18") || 18;
-        const width = item.getBoundingClientRect().width;
-        return width + gap;
+        return item.getBoundingClientRect().width + gap;
       }
 
-      nextArrow.addEventListener("click", function () {
-        strip.scrollBy({
-          left: getStep(),
-          behavior: "smooth"
-        });
+      nextArrow.addEventListener("click", () => {
+        strip.scrollBy({ left: getStep(), behavior: "smooth" });
       });
 
-      prevArrow.addEventListener("click", function () {
-        strip.scrollBy({
-          left: -getStep(),
-          behavior: "smooth"
-        });
+      prevArrow.addEventListener("click", () => {
+        strip.scrollBy({ left: -getStep(), behavior: "smooth" });
       });
     });
   </script>
+
 </body>
 </html>
