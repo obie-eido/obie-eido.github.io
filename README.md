@@ -2,474 +2,510 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Jazen Portfolio</title>
+  <title>Obie Brown Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Digital looking font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --bg-light: #f5f3ee;
-      --bg-dark: #050505;
-      --text-main: #111111;
-      --accent: #d0211c;
-      --muted: #888888;
+      --bg-dark: #020202;
+      --bg-light: #f4f4f4;
+      --accent: #ff3b3b;
+      --text-muted: #b4b4b4;
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html, body {
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #111111;
-      color: var(--text-main);
-      line-height: 1.4;
-    }
-
-    .page {
-      max-width: 1200px;
-      margin: 40px auto;
-      background: #111111;
-    }
-
-    section {
-      margin-bottom: 40px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-    }
-
-    /* Hero */
-
-    .hero {
-      background: var(--bg-light);
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-      min-height: 420px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-inner {
-      padding: 40px 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .hero-title {
-      font-size: 52px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-    }
-
-    .hero-title span {
-      display: block;
-    }
-
-    .hero-meta {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    .hero-contact {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      font-size: 12px;
-      margin-bottom: 32px;
-    }
-
-    .hero-contact h4 {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin-bottom: 6px;
-      color: var(--muted);
-    }
-
-    .hero-contact p {
-      margin-bottom: 4px;
-    }
-
-    .hero-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-    }
-
-    .hero-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .hero-image {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-side-label {
-      position: absolute;
-      right: 18px;
-      top: 40px;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 10px;
-      background: #ffffff;
-      padding: 6px 4px;
-    }
-
-    .hero-accent-bar {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      width: 6px;
-      height: 40px;
-      background: var(--accent);
-    }
-
-    /* Dark panel */
-
-    .panel-dark {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg-dark);
-      color: #f5f5f5;
-      padding: 32px 40px 18px;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 80px;
-      color: #d0d0d0;
-    }
-
-    .panel-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 40px;
-      font-size: 13px;
-      margin-bottom: 40px;
-    }
-
-    .panel-grid h3 {
-      font-size: 13px;
-      margin-bottom: 10px;
-    }
-
-    .panel-grid p {
-      color: #b0b0b0;
-      max-width: 260px;
-    }
-
-    .panel-thumbs {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      font-size: 0;
-    }
-
-    .panel-thumbs img {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
-    }
-
-    .panel-side-label {
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 10px;
-      color: #d0d0d0;
-    }
-
-    .panel-wrapper {
-      position: relative;
-    }
-
-    .panel-accent-bar {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      width: 6px;
-      height: 40px;
-      background: var(--accent);
-    }
-
-    /* Overview */
-
-    .overview {
-      background: var(--bg-light);
-      padding: 32px 40px 28px;
-    }
-
-    .overview-topline {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .overview-title {
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 22px;
-    }
-
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 2fr 2fr 1.2fr;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .overview-grid img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-    }
-
-    .overview-copy {
-      font-size: 12px;
-      max-width: 720px;
-      color: #444444;
-      margin-bottom: 24px;
-    }
-
-    .overview-footer {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .overview-accent-bar {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      width: 6px;
-      height: 40px;
-      background: var(--accent);
-    }
-
-    .overview-wrapper {
-      position: relative;
+      color: #ffffff;
     }
 
     a {
       color: inherit;
       text-decoration: none;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-      padding-bottom: 1px;
+    }
+
+    /* Layout utility */
+    .page-padding {
+      padding: 24px 7vw 32px;
+    }
+
+    /* HERO / HOME SECTION */
+
+    .hero {
+      min-height: 100vh;
+      background: var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-header {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-header span {
+      white-space: nowrap;
+    }
+
+    .hero-middle {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-middle-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 64px;
+      justify-content: center;
+      text-align: center;
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-description {
+      max-width: 320px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .hero-description-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    /* Work strip */
+
+    .work-strip-wrapper {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .work-strip {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .work-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+    .work-strip::-webkit-scrollbar-track {
+      background: #111111;
+    }
+    .work-strip::-webkit-scrollbar-thumb {
+      background: #444444;
+    }
+
+    .work-item {
+      scroll-snap-align: start;
+      min-width: 230px;
+      background: #111111;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid #202020;
+    }
+
+    .work-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .work-caption {
+      padding: 8px 10px 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-family: "Orbitron", system-ui, sans-serif;
+    }
+
+    .work-index {
+      margin-right: 6px;
+      color: #ffffff;
+    }
+
+    /* Vertical text on the right */
+
+    .vertical-tag {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: center;
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Scroll hint */
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .scroll-hint svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* ABOUT / RESUME SECTION */
+
+    .about {
+      background: var(--bg-light);
+      color: #111111;
+      padding-top: 72px;
+      padding-bottom: 80px;
+    }
+
+    .about-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-heading {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .about-subtitle {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: #777777;
+      margin-bottom: 18px;
+    }
+
+    .about-body {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #333333;
+      margin-bottom: 24px;
+    }
+
+    .resume-block {
+      border-top: 1px solid #dddddd;
+      padding-top: 18px;
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
+    .resume-item {
+      margin-bottom: 16px;
+    }
+
+    .resume-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .resume-meta {
+      font-size: 12px;
+      color: #777777;
+      margin-bottom: 6px;
+    }
+
+    .resume-text {
+      font-size: 13px;
+      color: #444444;
+    }
+
+    .contact-block {
+      margin-top: 24px;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .contact-block a {
+      color: #111111;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .contact-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      color: #777777;
+    }
+
+    .social-row {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid #cccccc;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Photo */
+
+    .about-photo {
+      width: 100%;
+      max-width: 360px;
+      margin-left: auto;
+      border-radius: 12px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border: 1px solid #d6d6d6;
+      background: #dddddd;
+    }
+
+    .about-photo-caption {
+      font-size: 11px;
+      color: #888888;
+      margin-top: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
 
     /* Responsive */
 
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .hero-image {
-        min-height: 260px;
+      .vertical-tag {
+        display: none;
       }
 
-      .panel-grid {
-        grid-template-columns: 1fr;
+      .about-inner {
+        grid-template-columns: minmax(0, 1fr);
       }
 
-      .panel-thumbs {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .overview-grid {
-        grid-template-columns: 1fr;
+      .about-photo {
+        margin: 16px 0 0 0;
       }
     }
 
     @media (max-width: 600px) {
-      .hero-inner,
-      .panel-dark,
-      .overview {
-        padding: 24px 18px;
+      .page-padding {
+        padding-inline: 18px;
       }
 
-      .hero-title {
-        font-size: 38px;
+      .hero-middle-inner {
+        gap: 28px;
       }
 
-      .hero-contact {
-        grid-template-columns: 1fr;
-      }
-
-      .panel-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-      }
-
-      .overview-topline {
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .overview-footer {
-        flex-direction: column;
-        gap: 6px;
+      .hero-header {
+        flex-wrap: wrap;
+        gap: 12px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
 
-    <!-- Hero section -->
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-top">
-          <div class="hero-title">
-            <span>JAZEN</span>
-            <span>PORTFOLIO</span>
+  <!-- HOME / HERO -->
+  <section class="hero page-padding" id="top">
+    <header class="hero-header">
+      <span>Obie Brown</span>
+      <span>Portfolio</span>
+      <span>2026</span>
+    </header>
+
+    <div class="hero-middle">
+      <div class="hero-middle-inner">
+        <span>Brand Systems</span>
+        <span>Visual Experiments</span>
+        <span>Digital Storytelling</span>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-description">
+        <div class="hero-description-title">Marketing and Design</div>
+        <p>
+          Placeholder bio text for Obie Brown. This line explains a focus on
+          strategy, visual identity, and concept driven campaigns that live at
+          the edge of fashion, culture, and technology. Add a sharper personal
+          description here once your portfolio is ready.
+        </p>
+      </div>
+
+      <div class="work-strip-wrapper">
+        <div class="work-strip">
+          <!-- Work item 1 -->
+          <a class="work-item" href="/404.html">
+            <img src="https://via.placeholder.com/480x320?text=Project+01" alt="Project 01 placeholder" />
+            <div class="work-caption">
+              <span class="work-index">001</span>
+              Urban Echo: Campaign Identity
+            </div>
+          </a>
+          <!-- Work item 2 -->
+          <a class="work-item" href="/404.html">
+            <img src="https://via.placeholder.com/480x320?text=Project+02" alt="Project 02 placeholder" />
+            <div class="work-caption">
+              <span class="work-index">002</span>
+              Lumen Studio: Digital Lookbook
+            </div>
+          </a>
+          <!-- Work item 3 -->
+          <a class="work-item" href="/404.html">
+            <img src="https://via.placeholder.com/480x320?text=Project+03" alt="Project 03 placeholder" />
+            <div class="work-caption">
+              <span class="work-index">003</span>
+              Signal Type: Visual System
+            </div>
+          </a>
+          <!-- Work item 4 -->
+          <a class="work-item" href="/404.html">
+            <img src="https://via.placeholder.com/480x320?text=Project+04" alt="Project 04 placeholder" />
+            <div class="work-caption">
+              <span class="work-index">004</span>
+              Transit Moodboard: Experiential Map
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vertical-tag">
+      Obie Brown: Ongoing Practice in Visual Systems
+    </div>
+
+    <a href="#about" class="scroll-hint">
+      <span>Scroll to resume</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M12 16.5l-6.3-6.3 1.4-1.4L12 13.7l4.9-4.9 1.4 1.4z"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ABOUT / RESUME -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div>
+        <div class="about-subtitle">Profile</div>
+        <h2 class="about-heading">About Obie Brown</h2>
+        <p class="about-body">
+          Placeholder copy for an extended introduction. Describe your approach
+          to marketing and design, how you move between strategy and execution,
+          and the kinds of brands or clients you enjoy working with. Touch on
+          your interest in fashion, culture, and technology driven storytelling.
+        </p>
+
+        <div class="resume-block">
+          <div class="resume-item">
+            <div class="resume-title">Role Title Here</div>
+            <div class="resume-meta">Company Name: 2023 – Present</div>
+            <div class="resume-text">
+              Short bullet style description of what you do on a daily basis,
+              key achievements, and measurable impact. Replace this placeholder
+              with real experience items.
+            </div>
           </div>
-          <div class="hero-meta">
-            <div>Paris - Global</div>
-            <div>Fashion Studio</div>
+          <div class="resume-item">
+            <div class="resume-title">Previous Role Title</div>
+            <div class="resume-meta">Studio or Brand: 2020 – 2023</div>
+            <div class="resume-text">
+              Another block to outline responsibilities in marketing and design,
+              such as building campaigns, leading shoots, or developing brand
+              systems across digital touchpoints.
+            </div>
           </div>
         </div>
 
-        <div class="hero-contact">
-          <div>
-            <h4>Contact</h4>
-            <p>Email: <a href="mailto:hello@jazenstudio.com">hello@jazenstudio.com</a></p>
-            <p>Phone: +1 000 000 0000</p>
-            <p>Instagram: @yourhandle</p>
-            <p>Portfolio: jazenstudio.com</p>
-          </div>
-          <div>
-            <h4>Studio</h4>
-            <p>123 Lumiere St</p>
-            <p>Paris, France</p>
-            <p>Currently: Open to collaborations</p>
-            <p>Focus: Fashion, creative direction, visual systems</p>
-          </div>
-        </div>
+        <div class="contact-block">
+          <div class="contact-label">Contact</div>
+          <div>E-mail: <a href="mailto:jazenbrownjr@gmail.com">jazenbrownjr@gmail.com</a></div>
+          <div>Phone: <a href="tel:+16782008121">678-200-8121</a></div>
 
-        <div class="hero-footer">
-          <div class="hero-dot"></div>
-          <div>Selected work 2022 - 2025</div>
+          <div class="social-row">
+            <span class="contact-label">Social</span>
+            <!-- Replace with real links or icon fonts later -->
+            <div class="social-icon" title="Instagram">IG</div>
+            <div class="social-icon" title="Behance">Be</div>
+            <div class="social-icon" title="LinkedIn">In</div>
+          </div>
         </div>
       </div>
 
-      <div class="hero-image">
-        <!-- Replace src with your own portrait or hero shot -->
-        <img src="https://images.pexels.com/photos/1030895/pexels-photo-1030895.jpeg" alt="Hero image" />
-        <div class="hero-side-label">Minimal portfolio by Jazen</div>
-        <div class="hero-accent-bar"></div>
-      </div>
-    </section>
-
-    <!-- Dark panel -->
-    <section class="panel-wrapper">
-      <div class="panel-dark">
-        <div class="panel-header">
-          <span>Studio Notes</span>
-          <span>Luxury minimalism</span>
-          <span>2025</span>
-        </div>
-
-        <div class="panel-grid">
-          <div>
-            <h3>Editorial direction</h3>
-            <p>Clean layouts, strict grids, and negative space that lets garments, textures, and bodies speak first.</p>
-          </div>
-          <div>
-            <h3>Visual identity</h3>
-            <p>Logotypes, wordmarks, and systems that translate across print, digital, and spatial environments.</p>
-          </div>
-          <div>
-            <h3>Creative atmosphere</h3>
-            <p>Work rooted in intimacy and honesty, built around people rather than trends.</p>
-          </div>
-        </div>
-
-        <div class="panel-thumbs">
-          <!-- Replace these with your own small thumbnails -->
-          <img src="https://images.pexels.com/photos/37347/office-freelancer-computer-business-37347.jpeg" alt="">
-          <img src="https://images.pexels.com/photos/373965/pexels-photo-373965.jpeg" alt="">
-          <img src="https://images.pexels.com/photos/1030933/pexels-photo-1030933.jpeg" alt="">
-          <img src="https://images.pexels.com/photos/1030896/pexels-photo-1030896.jpeg" alt="">
-          <img src="https://images.pexels.com/photos/373911/pexels-photo-373911.jpeg" alt="">
+      <div>
+        <!-- Replace src with your own portrait later -->
+        <img class="about-photo" src="https://via.placeholder.com/600x800?text=Portrait+Placeholder" alt="Portrait placeholder" />
+        <div class="about-photo-caption">
+          Portrait placeholder: replace with your own image
         </div>
       </div>
-      <div class="panel-side-label">Curated work across fashion and image making</div>
-      <div class="panel-accent-bar"></div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Overview -->
-    <section class="overview-wrapper">
-      <div class="overview">
-        <div class="overview-topline">
-          <span>Jazen Studio</span>
-          <span>Crafting cultural presence</span>
-          <span>2025</span>
-        </div>
-
-        <div class="overview-title">Portfolio overview 6.0</div>
-
-        <div class="overview-grid">
-          <!-- Swap with your project shots -->
-          <img src="https://images.pexels.com/photos/1030915/pexels-photo-1030915.jpeg" alt="Project 1">
-          <img src="https://images.pexels.com/photos/1030899/pexels-photo-1030899.jpeg" alt="Project 2">
-          <img src="https://images.pexels.com/photos/1030898/pexels-photo-1030898.jpeg" alt="Project 3">
-        </div>
-
-        <div class="overview-copy">
-          Projects as systems, not fragments. Each series lives as a small universe: casting, styling, location, typography, and color working together as one language. This portfolio highlights campaign editorials, lookbooks, and experimental personal work that explores identity, texture, and movement.
-        </div>
-
-        <div class="overview-footer">
-          <span>www: jazenstudio.com</span>
-          <span>Currently based in Paris and Atlanta</span>
-          <span>Contact: hello@jazenstudio.com</span>
-        </div>
-      </div>
-      <div class="overview-accent-bar"></div>
-    </section>
-
-  </div>
 </body>
 </html>
