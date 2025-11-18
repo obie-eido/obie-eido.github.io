@@ -9,7 +9,7 @@
 
   <style>
     :root {
-      --bg-dark: #020202;
+      --bg-dark: #101010;
       --bg-light: #f4f4f4;
       --accent: #ff3b3b;
       --text-muted: #b4b4b4;
@@ -90,10 +90,9 @@
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
-      gap: 260px; /* large spacing between phrases */
+      gap: 40px;
       font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 12px;
       text-transform: uppercase;
@@ -106,14 +105,15 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 32px;
+      gap: 80px; /* more space between left text and slideshow */
       flex-wrap: nowrap;
       padding-inline: 24px;
+      margin-bottom: 16px;
     }
 
     .hero-description {
-      flex: 0 0 20%;
-      max-width: 260px;
+      flex: 0 0 30%;
+      max-width: 340px;
       font-size: 12px;
       line-height: 1.7;
       color: var(--text-muted);
@@ -132,7 +132,7 @@
 
     .work-strip-wrapper {
       position: relative;
-      flex: 0 0 80%;
+      flex: 0 0 55%; /* slideshow smaller */
       min-width: 260px;
     }
 
@@ -142,53 +142,50 @@
       overflow-x: auto;
       padding-bottom: 6px;
       scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Firefox hide scrollbar */
+      scrollbar-width: none;
+      scroll-behavior: smooth;
     }
 
     .work-strip::-webkit-scrollbar {
-      display: none; /* WebKit hide */
+      display: none;
     }
 
     .work-item {
       scroll-snap-align: start;
-      min-width: 260px;
-      background: #111111;
+      min-width: 220px;
+      background: transparent;
       border-radius: 0;
-      overflow: hidden;
-      border: 1px solid #202020;
+      overflow: visible;
+      border: none;
+      color: var(--text-muted);
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .work-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
     .work-item img {
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 0;
+      border: 1px solid #2a2a2a;
     }
 
-    .work-caption {
-      padding: 8px 10px 10px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-
-    .work-index {
-      margin-right: 6px;
-      color: #ffffff;
-    }
-
-    .work-next-arrow {
+    .work-next-arrow,
+    .work-prev-arrow {
       position: absolute;
-      right: 24px;
       top: 50%;
       transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       border-radius: 999px;
       border: 1px solid #444444;
       background: rgba(5, 5, 5, 0.9);
-      color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -196,12 +193,38 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s ease-in-out;
-      font-size: 18px;
     }
 
-    .work-strip-wrapper:hover .work-next-arrow {
+    .work-next-arrow {
+      right: 24px;
+    }
+
+    .work-prev-arrow {
+      left: 24px;
+    }
+
+    .work-strip-wrapper:hover .work-next-arrow,
+    .work-strip-wrapper:hover .work-prev-arrow {
       opacity: 1;
       pointer-events: auto;
+    }
+
+    .work-next-arrow::before,
+    .work-prev-arrow::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .work-next-arrow::before {
+      border-width: 7px 0 7px 11px;
+      border-color: transparent transparent transparent #ffffff;
+    }
+
+    .work-prev-arrow::before {
+      border-width: 7px 11px 7px 0;
+      border-color: transparent #ffffff transparent transparent;
     }
 
     /* ABOUT / RESUME SECTION */
@@ -267,6 +290,33 @@
     }
 
     .resume-text {
+      font-size: 13px;
+      color: #444444;
+    }
+
+    .education-block {
+      border-top: 1px solid #dddddd;
+      padding-top: 18px;
+      margin-top: 20px;
+      font-size: 13px;
+    }
+
+    .education-item {
+      margin-bottom: 14px;
+    }
+
+    .education-title {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .education-meta {
+      font-size: 12px;
+      color: #777777;
+      margin-bottom: 4px;
+    }
+
+    .education-text {
       font-size: 13px;
       color: #444444;
     }
@@ -358,7 +408,7 @@
 
     @media (max-width: 600px) {
       .hero-middle-inner {
-        gap: 120px;
+        gap: 24px;
         font-size: 11px;
       }
 
@@ -372,6 +422,7 @@
 
       .hero-bottom {
         padding-inline: 16px;
+        gap: 40px;
       }
 
       .about {
@@ -380,6 +431,10 @@
 
       .work-next-arrow {
         right: 16px;
+      }
+
+      .work-prev-arrow {
+        left: 16px;
       }
     }
   </style>
@@ -414,44 +469,32 @@
       </div>
 
       <div class="work-strip-wrapper">
+        <button class="work-prev-arrow" type="button" aria-label="Previous project"></button>
+
         <div class="work-strip">
           <!-- Use your own AI generated artwork here later -->
           <a class="work-item" href="/404.html">
+            <div class="work-label">01</div>
             <img src="https://picsum.photos/seed/ai-project-01/480/320" alt="AI generated project 01" />
-            <div class="work-caption">
-              <span class="work-index">001</span>
-              Urban Echo: Campaign Identity
-            </div>
           </a>
 
           <a class="work-item" href="/404.html">
+            <div class="work-label">02</div>
             <img src="https://picsum.photos/seed/ai-project-02/480/320" alt="AI generated project 02" />
-            <div class="work-caption">
-              <span class="work-index">002</span>
-              Lumen Studio: Digital Lookbook
-            </div>
           </a>
 
           <a class="work-item" href="/404.html">
+            <div class="work-label">03</div>
             <img src="https://picsum.photos/seed/ai-project-03/480/320" alt="AI generated project 03" />
-            <div class="work-caption">
-              <span class="work-index">003</span>
-              Signal Type: Visual System
-            </div>
           </a>
 
           <a class="work-item" href="/404.html">
+            <div class="work-label">04</div>
             <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="AI generated project 04" />
-            <div class="work-caption">
-              <span class="work-index">004</span>
-              Transit Moodboard: Experiential Map
-            </div>
           </a>
         </div>
 
-        <button class="work-next-arrow" type="button" aria-label="Next project">
-          →
-        </button>
+        <button class="work-next-arrow" type="button" aria-label="Next project"></button>
       </div>
     </div>
   </section>
@@ -490,6 +533,25 @@
           </div>
         </div>
 
+        <div class="education-block">
+          <div class="education-item">
+            <div class="education-title">Degree Name Here</div>
+            <div class="education-meta">School or University, 2018 – 2022</div>
+            <div class="education-text">
+              Brief description of focus areas in marketing and design, key studio
+              projects, or research themes you want to highlight.
+            </div>
+          </div>
+          <div class="education-item">
+            <div class="education-title">Additional Coursework</div>
+            <div class="education-meta">Workshops, Online Programs</div>
+            <div class="education-text">
+              Placeholder text for short courses, certificates, or workshops that
+              connect directly to your visual and strategic work.
+            </div>
+          </div>
+        </div>
+
         <div class="contact-block">
           <div class="contact-label">Contact</div>
           <div>E-mail: <a href="mailto:jazenbrownjr@gmail.com">jazenbrownjr@gmail.com</a></div>
@@ -522,25 +584,32 @@
   </section>
 
   <script>
-    // Scroll to next work item when arrow is clicked
     document.addEventListener("DOMContentLoaded", function () {
       const strip = document.querySelector(".work-strip");
-      const arrow = document.querySelector(".work-next-arrow");
+      const nextArrow = document.querySelector(".work-next-arrow");
+      const prevArrow = document.querySelector(".work-prev-arrow");
 
-      if (!strip || !arrow) return;
+      if (!strip || !nextArrow || !prevArrow) return;
 
-      arrow.addEventListener("click", function () {
+      function getStep() {
         const item = strip.querySelector(".work-item");
-        if (!item) return;
-
+        if (!item) return 260;
         const style = window.getComputedStyle(strip);
         const gap = parseFloat(style.columnGap || style.gap || "18") || 18;
-
         const width = item.getBoundingClientRect().width;
-        const scrollAmount = width + gap;
+        return width + gap;
+      }
 
+      nextArrow.addEventListener("click", function () {
         strip.scrollBy({
-          left: scrollAmount,
+          left: getStep(),
+          behavior: "smooth"
+        });
+      });
+
+      prevArrow.addEventListener("click", function () {
+        strip.scrollBy({
+          left: -getStep(),
           behavior: "smooth"
         });
       });
