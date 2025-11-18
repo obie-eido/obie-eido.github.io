@@ -4,8 +4,8 @@
   <title>Obie Brown Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Digital looking font -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Coding style font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -36,7 +36,6 @@
       text-decoration: none;
     }
 
-    /* Layout utility */
     .page-padding {
       padding: 24px 7vw 32px;
     }
@@ -54,10 +53,10 @@
     }
 
     .hero-header {
-      font-family: "Orbitron", system-ui, sans-serif;
-      font-size: 15px;
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       display: flex;
       gap: 24px;
       align-items: center;
@@ -71,38 +70,42 @@
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
 
     .hero-middle-inner {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 64px;
-      justify-content: center;
-      text-align: center;
-      font-family: "Orbitron", system-ui, sans-serif;
-      font-size: 15px;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 180px; /* large spacing between phrases */
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
+      text-align: left;
     }
 
     .hero-bottom {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 32px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     .hero-description {
-      max-width: 320px;
+      flex: 0 0 22%;
+      max-width: 260px;
       font-size: 13px;
       line-height: 1.6;
       color: var(--text-muted);
     }
 
     .hero-description-title {
-      font-family: "Orbitron", system-ui, sans-serif;
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       text-transform: uppercase;
       letter-spacing: 0.18em;
       font-size: 12px;
@@ -113,7 +116,7 @@
     /* Work strip */
 
     .work-strip-wrapper {
-      flex: 1;
+      flex: 0 0 78%;
       min-width: 260px;
     }
 
@@ -123,21 +126,16 @@
       overflow-x: auto;
       padding-bottom: 6px;
       scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Firefox hide scrollbar */
     }
 
     .work-strip::-webkit-scrollbar {
-      height: 6px;
-    }
-    .work-strip::-webkit-scrollbar-track {
-      background: #111111;
-    }
-    .work-strip::-webkit-scrollbar-thumb {
-      background: #444444;
+      display: none; /* WebKit hide */
     }
 
     .work-item {
       scroll-snap-align: start;
-      min-width: 230px;
+      min-width: 260px;
       background: #111111;
       border-radius: 4px;
       overflow: hidden;
@@ -156,50 +154,12 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-family: "Orbitron", system-ui, sans-serif;
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
     .work-index {
       margin-right: 6px;
       color: #ffffff;
-    }
-
-    /* Vertical text on the right */
-
-    .vertical-tag {
-      position: absolute;
-      top: 50%;
-      right: 16px;
-      transform: translateY(-50%) rotate(90deg);
-      transform-origin: center;
-      font-family: "Orbitron", system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    /* Scroll hint */
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
-
-    .scroll-hint svg {
-      width: 14px;
-      height: 14px;
     }
 
     /* ABOUT / RESUME SECTION */
@@ -221,7 +181,7 @@
     }
 
     .about-heading {
-      font-family: "Orbitron", system-ui, sans-serif;
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 18px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -310,8 +270,6 @@
       cursor: pointer;
     }
 
-    /* Photo */
-
     .about-photo {
       width: 100%;
       max-width: 360px;
@@ -331,16 +289,19 @@
       text-transform: uppercase;
     }
 
-    /* Responsive */
-
     @media (max-width: 900px) {
       .hero-bottom {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .vertical-tag {
-        display: none;
+      .hero-description {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .work-strip-wrapper {
+        flex: 0 0 100%;
       }
 
       .about-inner {
@@ -358,7 +319,8 @@
       }
 
       .hero-middle-inner {
-        gap: 28px;
+        gap: 80px;
+        font-size: 13px;
       }
 
       .hero-header {
@@ -399,33 +361,33 @@
 
       <div class="work-strip-wrapper">
         <div class="work-strip">
-          <!-- Work item 1 -->
+          <!-- Use your own AI generated artwork here later -->
           <a class="work-item" href="/404.html">
-            <img src="https://via.placeholder.com/480x320?text=Project+01" alt="Project 01 placeholder" />
+            <img src="https://picsum.photos/seed/ai-project-01/480/320" alt="AI generated project 01" />
             <div class="work-caption">
               <span class="work-index">001</span>
               Urban Echo: Campaign Identity
             </div>
           </a>
-          <!-- Work item 2 -->
+
           <a class="work-item" href="/404.html">
-            <img src="https://via.placeholder.com/480x320?text=Project+02" alt="Project 02 placeholder" />
+            <img src="https://picsum.photos/seed/ai-project-02/480/320" alt="AI generated project 02" />
             <div class="work-caption">
               <span class="work-index">002</span>
               Lumen Studio: Digital Lookbook
             </div>
           </a>
-          <!-- Work item 3 -->
+
           <a class="work-item" href="/404.html">
-            <img src="https://via.placeholder.com/480x320?text=Project+03" alt="Project 03 placeholder" />
+            <img src="https://picsum.photos/seed/ai-project-03/480/320" alt="AI generated project 03" />
             <div class="work-caption">
               <span class="work-index">003</span>
               Signal Type: Visual System
             </div>
           </a>
-          <!-- Work item 4 -->
+
           <a class="work-item" href="/404.html">
-            <img src="https://via.placeholder.com/480x320?text=Project+04" alt="Project 04 placeholder" />
+            <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="AI generated project 04" />
             <div class="work-caption">
               <span class="work-index">004</span>
               Transit Moodboard: Experiential Map
@@ -434,17 +396,6 @@
         </div>
       </div>
     </div>
-
-    <div class="vertical-tag">
-      Obie Brown: Ongoing Practice in Visual Systems
-    </div>
-
-    <a href="#about" class="scroll-hint">
-      <span>Scroll to resume</span>
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path fill="currentColor" d="M12 16.5l-6.3-6.3 1.4-1.4L12 13.7l4.9-4.9 1.4 1.4z"/>
-      </svg>
-    </a>
   </section>
 
   <!-- ABOUT / RESUME -->
@@ -498,7 +449,7 @@
 
       <div>
         <!-- Replace src with your own portrait later -->
-        <img class="about-photo" src="https://via.placeholder.com/600x800?text=Portrait+Placeholder" alt="Portrait placeholder" />
+        <img class="about-photo" src="https://picsum.photos/seed/portrait-ai/600/800" alt="Portrait placeholder" />
         <div class="about-photo-caption">
           Portrait placeholder: replace with your own image
         </div>
