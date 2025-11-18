@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -38,7 +37,7 @@
     }
 
     .page-padding {
-      padding: 24px 7vw 32px;
+      padding: 24px 0 32px;
     }
 
     /* HERO / HOME SECTION */
@@ -55,15 +54,27 @@
 
     .hero-header {
       font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 14px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.22em;
       display: flex;
-      gap: 24px;
       align-items: center;
+      padding-inline: 24px;
     }
 
-    .hero-header span {
+    .hero-name {
+      margin-right: 12px;
+      white-space: nowrap;
+    }
+
+    .hero-tag {
+      margin-left: auto;
+      margin-right: 80px;
+      white-space: nowrap;
+    }
+
+    .hero-year {
+      margin-right: 24px;
       white-space: nowrap;
     }
 
@@ -71,22 +82,24 @@
       flex: 1;
       display: flex;
       align-items: center;
+      padding-inline: 24px;
     }
 
     .hero-middle-inner {
       width: 100%;
-      max-width: 960px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       flex-wrap: nowrap;
       justify-content: flex-start;
       align-items: center;
-      gap: 180px; /* large spacing between phrases */
+      gap: 260px; /* large spacing between phrases */
       font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 14px;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.24em;
       text-align: left;
+      white-space: nowrap;
     }
 
     .hero-bottom {
@@ -95,21 +108,22 @@
       align-items: flex-start;
       gap: 32px;
       flex-wrap: nowrap;
+      padding-inline: 24px;
     }
 
     .hero-description {
-      flex: 0 0 22%;
+      flex: 0 0 20%;
       max-width: 260px;
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 12px;
+      line-height: 1.7;
       color: var(--text-muted);
     }
 
     .hero-description-title {
       font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
+      letter-spacing: 0.2em;
+      font-size: 11px;
       margin-bottom: 12px;
       color: #ffffff;
     }
@@ -117,7 +131,8 @@
     /* Work strip */
 
     .work-strip-wrapper {
-      flex: 0 0 78%;
+      position: relative;
+      flex: 0 0 80%;
       min-width: 260px;
     }
 
@@ -138,7 +153,7 @@
       scroll-snap-align: start;
       min-width: 260px;
       background: #111111;
-      border-radius: 4px;
+      border-radius: 0;
       overflow: hidden;
       border: 1px solid #202020;
     }
@@ -154,7 +169,7 @@
       font-size: 11px;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
@@ -163,13 +178,38 @@
       color: #ffffff;
     }
 
+    .work-next-arrow {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid #444444;
+      background: rgba(5, 5, 5, 0.9);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease-in-out;
+      font-size: 18px;
+    }
+
+    .work-strip-wrapper:hover .work-next-arrow {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     /* ABOUT / RESUME SECTION */
 
     .about {
       background: var(--bg-light);
       color: #111111;
-      padding-top: 72px;
-      padding-bottom: 80px;
+      padding: 72px 24px 80px;
     }
 
     .about-inner {
@@ -184,22 +224,22 @@
     .about-heading {
       font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       font-size: 18px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       margin-bottom: 16px;
     }
 
     .about-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.26em;
       color: #777777;
       margin-bottom: 18px;
     }
 
     .about-body {
-      font-size: 14px;
-      line-height: 1.8;
+      font-size: 13px;
+      line-height: 1.85;
       color: #333333;
       margin-bottom: 24px;
     }
@@ -258,17 +298,19 @@
       align-items: center;
     }
 
-    .social-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      border: 1px solid #cccccc;
+    .social-logo {
+      width: 32px;
+      height: 32px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
+    }
+
+    .social-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     .about-photo {
@@ -315,18 +357,29 @@
     }
 
     @media (max-width: 600px) {
-      .page-padding {
-        padding-inline: 18px;
-      }
-
       .hero-middle-inner {
-        gap: 80px;
-        font-size: 13px;
+        gap: 120px;
+        font-size: 11px;
       }
 
       .hero-header {
-        flex-wrap: wrap;
-        gap: 12px;
+        padding-inline: 16px;
+      }
+
+      .hero-year {
+        margin-right: 16px;
+      }
+
+      .hero-bottom {
+        padding-inline: 16px;
+      }
+
+      .about {
+        padding-inline: 16px;
+      }
+
+      .work-next-arrow {
+        right: 16px;
       }
     }
   </style>
@@ -336,9 +389,9 @@
   <!-- HOME / HERO -->
   <section class="hero page-padding" id="top">
     <header class="hero-header">
-      <span>Obie Brown</span>
-      <span>Portfolio</span>
-      <span>2026</span>
+      <span class="hero-name">Obie Brown</span>
+      <span class="hero-tag">Portfolio</span>
+      <span class="hero-year">2026</span>
     </header>
 
     <div class="hero-middle">
@@ -395,6 +448,10 @@
             </div>
           </a>
         </div>
+
+        <button class="work-next-arrow" type="button" aria-label="Next project">
+          →
+        </button>
       </div>
     </div>
   </section>
@@ -440,10 +497,16 @@
 
           <div class="social-row">
             <span class="contact-label">Social</span>
-            <!-- Replace with real links or icon fonts later -->
-            <div class="social-icon" title="Instagram">IG</div>
-            <div class="social-icon" title="Behance">Be</div>
-            <div class="social-icon" title="LinkedIn">In</div>
+            <!-- Replace src values with your own logo files -->
+            <a class="social-logo" href="#">
+              <img src="instagram-logo.svg" alt="Instagram logo" />
+            </a>
+            <a class="social-logo" href="#">
+              <img src="behance-logo.svg" alt="Behance logo" />
+            </a>
+            <a class="social-logo" href="#">
+              <img src="linkedin-logo.svg" alt="LinkedIn logo" />
+            </a>
           </div>
         </div>
       </div>
@@ -458,5 +521,30 @@
     </div>
   </section>
 
+  <script>
+    // Scroll to next work item when arrow is clicked
+    document.addEventListener("DOMContentLoaded", function () {
+      const strip = document.querySelector(".work-strip");
+      const arrow = document.querySelector(".work-next-arrow");
+
+      if (!strip || !arrow) return;
+
+      arrow.addEventListener("click", function () {
+        const item = strip.querySelector(".work-item");
+        if (!item) return;
+
+        const style = window.getComputedStyle(strip);
+        const gap = parseFloat(style.columnGap || style.gap || "18") || 18;
+
+        const width = item.getBoundingClientRect().width;
+        const scrollAmount = width + gap;
+
+        strip.scrollBy({
+          left: scrollAmount,
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
 </body>
 </html>
