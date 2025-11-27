@@ -1,6 +1,15 @@
-Here you go, full updated `index.html` with dropdowns in the About section, a new “Courses Taken” dropdown, and the right-side portrait staying fixed while the text scrolls.
+Nice, this is going to look clean.
 
-You can replace your entire current `index.html` with this:
+Here is the full updated `index.html` with:
+
+* About heading changed to **About Obie Brown**
+* About section using dropdowns for Profile, Experience, Education, Skills, Courses Taken, Contact
+* Skills split into **Marketing** and **Design** columns
+* Courses list as a long list, split into two columns
+* GPA line included
+* Right portrait sticky, left side scrolls
+
+Replace your current `index.html` with this entire file.
 
 ```html
 <html lang="en">
@@ -9,7 +18,6 @@ You can replace your entire current `index.html` with this:
   <title>Obie Brown Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
@@ -18,7 +26,6 @@ You can replace your entire current `index.html` with this:
       --bg-light: #f4f4f4;
       --accent: #ff3b3b;
       --text-muted: #b4b4b4;
-      --border-light: #dddddd;
     }
 
     * { box-sizing: border-box; }
@@ -95,9 +102,7 @@ You can replace your entire current `index.html` with this:
       white-space: nowrap;
     }
 
-    .ticker__track span {
-      white-space: nowrap;
-    }
+    .ticker__track span { white-space: nowrap; }
 
     @keyframes tickerScroll {
       0% { transform: translateX(0); }
@@ -255,67 +260,71 @@ You can replace your entire current `index.html` with this:
       text-transform: uppercase;
       letter-spacing: 0.26em;
       color: #777777;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
-    .about-body-intro {
-      font-size: 13px;
-      line-height: 1.85;
-      color: #333333;
-      margin-bottom: 20px;
+    .about-gpa {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #555555;
+      margin-bottom: 18px;
     }
 
     /* Accordion */
 
-    .accordion {
-      border-top: 1px solid var(--border-light);
-      margin-top: 12px;
+    .accordion-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .accordion-item {
-      border-bottom: 1px solid var(--border-light);
+    details {
+      border: 1px solid #dddddd;
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 10px 12px;
+      font-size: 13px;
     }
 
-    .accordion-header {
+    summary {
       list-style: none;
       cursor: pointer;
-      padding: 12px 0;
       font-family: "Source Code Pro", monospace;
-      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      color: #222222;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
-    .accordion-header::-webkit-details-marker {
-      display: none;
+    summary::-webkit-details-marker { display: none; }
+
+    .summary-label {
+      display: inline-block;
     }
 
-    .accordion-label {
-      flex: 1;
-    }
-
-    .accordion-icon {
+    .summary-toggle {
       font-size: 14px;
-      margin-left: 12px;
+      margin-left: 8px;
     }
 
-    details[open] .accordion-icon {
+    details[open] .summary-toggle {
       transform: rotate(90deg);
     }
 
     .accordion-body {
+      margin-top: 10px;
       font-size: 13px;
-      color: #333333;
-      padding: 0 0 14px 0;
       line-height: 1.8;
+      color: #333333;
     }
 
     .resume-item,
     .education-item {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .resume-title,
@@ -337,18 +346,46 @@ You can replace your entire current `index.html` with this:
       color: #444444;
     }
 
-    .courses-list {
-      padding-left: 18px;
+    /* Skills grid */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .skills-heading {
+      font-family: "Source Code Pro", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      margin-bottom: 6px;
+      color: #555555;
+    }
+
+    .skills-list {
       margin: 0;
+      padding-left: 18px;
+      font-size: 13px;
+      line-height: 1.7;
     }
 
-    .courses-list li {
-      margin-bottom: 4px;
+    /* Courses grid */
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 32px;
+      font-size: 12px;
+      line-height: 1.7;
     }
 
-    .skills-text {
-      white-space: pre-line;
+    .courses-grid ul {
+      margin: 0;
+      padding-left: 18px;
     }
+
+    /* Contact */
 
     .contact-block {
       font-size: 13px;
@@ -378,6 +415,8 @@ You can replace your entire current `index.html` with this:
     .social-logo { width: 32px; height: 32px; }
     .social-logo img { width: 100%; height: 100%; object-fit: contain; }
 
+    /* Right column portrait, sticky */
+
     .about-right {
       position: sticky;
       top: 80px;
@@ -387,13 +426,13 @@ You can replace your entire current `index.html` with this:
     .about-photo {
       width: 100%;
       max-width: 360px;
-      margin-left: auto;
       border-radius: 12px;
-      aspect-ratio: 3/4;
+      aspect-ratio: 3 / 4;
       object-fit: cover;
       border: 1px solid #d6d6d6;
       background: #dddddd;
       display: block;
+      margin-left: auto;
     }
 
     .about-photo-caption {
@@ -402,6 +441,7 @@ You can replace your entire current `index.html` with this:
       letter-spacing: 0.14em;
       text-transform: uppercase;
       margin-top: 8px;
+      text-align: right;
     }
 
     @media (max-width: 900px) {
@@ -424,7 +464,7 @@ You can replace your entire current `index.html` with this:
         margin-top: 24px;
       }
       .about-photo {
-        margin: 0;
+        margin-left: 0;
       }
     }
 
@@ -469,15 +509,15 @@ You can replace your entire current `index.html` with this:
       <div class="hero-description">
         <div class="hero-description-title">Marketing and Design</div>
         <p>
-          Portfolio experiments in strategy, brand identity, and concept driven campaigns
-          that live where culture, futurism, and aesthetics intersect.
+          Portfolio work that sits between fashion, marketing, and visual systems,
+          with an emphasis on clear structure, sharp concepts, and experimental but
+          readable layouts.
         </p>
       </div>
 
       <div class="work-strip-wrapper">
         <button class="work-prev-arrow" type="button" aria-label="Previous"></button>
         <div class="work-strip">
-
           <a class="work-item" href="work-01.html">
             <div class="work-label">01</div>
             <img src="slides/Slide1.PNG" alt="Project 01 Slide 1" />
@@ -497,12 +537,10 @@ You can replace your entire current `index.html` with this:
             <div class="work-label">04</div>
             <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="Placeholder project 04" />
           </a>
-
         </div>
         <button class="work-next-arrow" type="button" aria-label="Next"></button>
       </div>
     </div>
-
   </section>
 
   <!-- ABOUT / RESUME SECTION -->
@@ -512,30 +550,38 @@ You can replace your entire current `index.html` with this:
       <div>
         <div class="about-subtitle">Profile</div>
         <h2 class="about-heading">About Obie Brown</h2>
+        <div class="about-gpa">Current cumulative GPA: 3.09</div>
 
-        <p class="about-body-intro">
-          Creative fashion marketing student working across content, trend research,
-          visual communication, and retail strategy. Comfortable moving between concept
-          and execution, and building visuals and stories that feel honest, culturally
-          aware, and useful for the brands I work with.
-        </p>
-
-        <div class="accordion">
+        <div class="accordion-group">
+          <!-- PROFILE -->
+          <details open>
+            <summary>
+              <span class="summary-label">Profile</span>
+              <span class="summary-toggle">›</span>
+            </summary>
+            <div class="accordion-body">
+              I am a fashion marketing student with experience across buying, brand
+              communication, and visual design. I move between research, narrative,
+              and layout work, focusing on how ideas read on the page, on a screen,
+              and in a feed. I like projects that treat decks, campaigns, and clothes
+              as one connected system instead of separate tasks.
+            </div>
+          </details>
 
           <!-- EXPERIENCE -->
-          <details class="accordion-item" open>
-            <summary class="accordion-header">
-              <span class="accordion-label">Experience</span>
-              <span class="accordion-icon">›</span>
+          <details>
+            <summary>
+              <span class="summary-label">Experience</span>
+              <span class="summary-toggle">›</span>
             </summary>
             <div class="accordion-body">
               <div class="resume-item">
                 <div class="resume-title">Buyer</div>
                 <div class="resume-meta">Buffalo Exchange, Minneapolis MN | 03/2025 – Present</div>
                 <div class="resume-text">
-                  Select secondhand and vintage apparel based on demand and trends, build visual
-                  displays, communicate pricing to customers, and support seasonal assortments and
-                  floor changes.
+                  Buy secondhand and vintage apparel based on demand and trend signals,
+                  style and build visual displays, price product, and support seasonal
+                  assortment planning with the team.
                 </div>
               </div>
 
@@ -543,42 +589,45 @@ You can replace your entire current `index.html` with this:
                 <div class="resume-title">Social Media Assistant</div>
                 <div class="resume-meta">Nordstrom, Mall of America | 03/2024 – 06/2024</div>
                 <div class="resume-text">
-                  Planned and posted content, created graphic assets, partnered with influencers,
-                  and engaged with customers across social channels for campaigns and events.
+                  Produced daily content, designed graphics, collaborated on influencer
+                  initiatives, and monitored engagement to support store level marketing
+                  and campaigns.
                 </div>
               </div>
 
               <div class="resume-item">
                 <div class="resume-title">Creative Director Intern</div>
-                <div class="resume-meta">Planet i, Remote NY | 01/2024 – 06/2024</div>
+                <div class="resume-meta">Planet i, Remote New York | 01/2024 – 06/2024</div>
                 <div class="resume-text">
-                  Researched fashion and consumer trends, built customer profiles, sketched product
-                  ideas, and contributed concepts for branded content and marketing campaigns.
+                  Researched fashion and culture trends, developed customer profiles,
+                  sketched product concepts, and helped shape stories for branded content
+                  and marketing briefs.
                 </div>
               </div>
 
               <div class="resume-item">
                 <div class="resume-meta">
-                  Time between Nordstrom and Buffalo Exchange includes a study abroad semester in
-                  Taiwan focused on design, culture, and language.
+                  Time between Nordstrom and Buffalo Exchange includes a study abroad
+                  semester in Taiwan focused on design, culture, and language.
                 </div>
               </div>
             </div>
           </details>
 
           <!-- EDUCATION -->
-          <details class="accordion-item">
-            <summary class="accordion-header">
-              <span class="accordion-label">Education</span>
-              <span class="accordion-icon">›</span>
+          <details>
+            <summary>
+              <span class="summary-label">Education</span>
+              <span class="summary-toggle">›</span>
             </summary>
             <div class="accordion-body">
               <div class="education-item">
                 <div class="education-title">LIM College</div>
                 <div class="education-meta">New York, NY | 2023 – 2026</div>
                 <div class="education-text">
-                  Bachelor of Business Administration, Fashion Marketing. Focus on brand strategy,
-                  digital marketing, consumer behavior, and fashion industries.
+                  Bachelor of Business Administration, Fashion Marketing. Focus on
+                  brand strategy, consumer behavior, and digital marketing within
+                  the fashion industry.
                 </div>
               </div>
 
@@ -586,63 +635,122 @@ You can replace your entire current `index.html` with this:
                 <div class="education-title">Le Fashion Lab</div>
                 <div class="education-meta">Atlanta, GA | 2020 – 2022</div>
                 <div class="education-text">
-                  Fashion design and garment construction coursework including pattern making,
-                  sewing, and experimental design projects.
+                  Fashion design and garment construction coursework, including
+                  patternmaking, sewing, and experimental design projects.
                 </div>
               </div>
             </div>
           </details>
 
-          <!-- COURSES -->
-          <details class="accordion-item">
-            <summary class="accordion-header">
-              <span class="accordion-label">Courses Taken</span>
-              <span class="accordion-icon">›</span>
+          <!-- SKILLS -->
+          <details>
+            <summary>
+              <span class="summary-label">Skills</span>
+              <span class="summary-toggle">›</span>
             </summary>
             <div class="accordion-body">
-              <ul class="courses-list">
-                <li>Marketing; Consumer Behavior; Marketing Insights and Research</li>
-                <li>Fashion Marketing and Communications; Fashion Branding</li>
-                <li>Global Fashion Markets and Licensing</li>
-                <li>Digital Marketing I; Digital Culture in Business and Life</li>
-                <li>Marketing Analytics; Applied Data Analysis</li>
-                <li>Digital Design I; Paris: City of Lights, Capital of Couture</li>
-                <li>Economics; Finance; Accounting; Business Law; Management</li>
-                <li>Communication: Methods and Audiences; Global Themes for Writing</li>
-              </ul>
+              <div class="skills-grid">
+                <div>
+                  <div class="skills-heading">Marketing</div>
+                  <ul class="skills-list">
+                    <li>Social media content creation</li>
+                    <li>Graphic design for campaigns</li>
+                    <li>Content writing and captions</li>
+                    <li>Email marketing flows</li>
+                    <li>Marketing analytics and insights</li>
+                    <li>Consumer and trend research</li>
+                    <li>Brand storytelling and positioning</li>
+                    <li>Digital marketing tools and platforms</li>
+                  </ul>
+                </div>
+                <div>
+                  <div class="skills-heading">Design</div>
+                  <ul class="skills-list">
+                    <li>Fashion illustration</li>
+                    <li>Flat illustration and line sheets</li>
+                    <li>Patternmaking</li>
+                    <li>Garment construction</li>
+                    <li>Tech pack design</li>
+                    <li>Textile research and sourcing</li>
+                    <li>Communication with manufacturers</li>
+                    <li>3D fashion design in CLO 3D</li>
+                    <li>Adobe Photoshop, advanced</li>
+                    <li>Adobe Illustrator, advanced</li>
+                    <li>Visual merchandising</li>
+                    <li>Creative direction and styling</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </details>
 
-          <!-- SKILLS -->
-          <details class="accordion-item">
-            <summary class="accordion-header">
-              <span class="accordion-label">Skills</span>
-              <span class="accordion-icon">›</span>
+          <!-- COURSES TAKEN -->
+          <details>
+            <summary>
+              <span class="summary-label">Courses Taken</span>
+              <span class="summary-toggle">›</span>
             </summary>
             <div class="accordion-body">
-              <div class="skills-text">
-Social media content creation
-Canva, Photoshop, Illustrator
-Copywriting and captions
-Email marketing basics
-Visual merchandising and styling
-Trend and customer research
-Creative direction for shoots and campaigns
+              <div class="courses-grid">
+                <ul>
+                  <li>Essentials of Composition</li>
+                  <li>College Success for Online Students</li>
+                  <li>Essentials of Introduction to Statistics</li>
+                  <li>English Composition</li>
+                  <li>Liberal Arts Elective</li>
+                  <li>Mathematics Elective</li>
+                  <li>Psychology</li>
+                  <li>Business Technology Elective</li>
+                  <li>Visual Studies Elective</li>
+                  <li>Marketing</li>
+                  <li>Business Spreadsheets</li>
+                  <li>Internship Prep: Designing Your Career</li>
+                  <li>Critical Thinking: Reading, Writing and Research</li>
+                  <li>Introduction to the Fashion Business</li>
+                  <li>Paris: City of Lights, Capital of Couture</li>
+                  <li>Internship 1</li>
+                  <li>Introduction to Statistics</li>
+                  <li>Management</li>
+                  <li>Consumer Behavior</li>
+                  <li>Applied Data Analysis</li>
+                </ul>
+                <ul>
+                  <li>Fashion Marketing and Communications</li>
+                  <li>Fashion Branding</li>
+                  <li>Fashion Media Elective (Study Abroad)</li>
+                  <li>Fashion Merchandising Elective (Study Abroad)</li>
+                  <li>Liberal Arts (Study Abroad)</li>
+                  <li>Communication: Methods and Audiences</li>
+                  <li>Digital Culture in Business and Life</li>
+                  <li>Economics</li>
+                  <li>Marketing Insights and Research</li>
+                  <li>Digital Design I</li>
+                  <li>Accounting</li>
+                  <li>Global Themes for Writing</li>
+                  <li>Marketing Analytics</li>
+                  <li>Internship 2</li>
+                  <li>Digital Marketing I</li>
+                  <li>Global Fashion Markets and Licensing</li>
+                  <li>Business Law</li>
+                  <li>Senior Co Op Prep: Launching Your Career</li>
+                  <li>Finance</li>
+                  <li>Applied Data Analysis (in progress)</li>
+                </ul>
               </div>
             </div>
           </details>
 
           <!-- CONTACT -->
-          <details class="accordion-item">
-            <summary class="accordion-header">
-              <span class="accordion-label">Contact</span>
-              <span class="accordion-icon">›</span>
+          <details>
+            <summary>
+              <span class="summary-label">Contact</span>
+              <span class="summary-toggle">›</span>
             </summary>
             <div class="accordion-body">
               <div class="contact-block">
                 <div class="contact-label">Contact</div>
-                <div>E-mail: <a href="mailto:jazenbrownjr@gmail.com">jazenbrownjr@gmail.com</a></div>
-                <div>Phone: <a href="tel:+16782008121">678-200-8121</a></div>
+                <div>E mail: <a href="mailto:jazenbrownjr@gmail.com">jazenbrownjr@gmail.com</a></div>
+                <div>Phone: <a href="tel:+16782008121">678 200 8121</a></div>
 
                 <div class="social-row">
                   <span class="contact-label">Social</span>
@@ -659,11 +767,10 @@ Creative direction for shoots and campaigns
               </div>
             </div>
           </details>
-
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: sticky portrait -->
+      <!-- RIGHT COLUMN: PORTRAIT, STICKY -->
       <div class="about-right">
         <img
           class="about-photo"
@@ -706,3 +813,5 @@ Creative direction for shoots and campaigns
 </body>
 </html>
 ```
+
+Next step on your side is just swapping in the actual portrait image and, if your GPA updates, changing that single line. The rest will flex with whatever work you add later.
