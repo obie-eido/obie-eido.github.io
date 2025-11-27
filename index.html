@@ -1,3 +1,8 @@
+Here you go, full rewritten file with the right image pinned and only the left text “scrolling past” it inside the About section.
+
+You only need to replace your entire `index.html` with this:
+
+```html
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -233,7 +238,7 @@
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 48px;
-      align-items: start;
+      align-items: flex-start;
     }
 
     .about-heading {
@@ -339,6 +344,14 @@
       margin-top: 8px;
     }
 
+    /* Sticky right column so left content scrolls past it */
+
+    .about-right {
+      position: sticky;
+      top: 120px;
+      align-self: flex-start;
+    }
+
     @media (max-width: 900px) {
       .hero-bottom {
         flex-direction: column;
@@ -354,16 +367,15 @@
       .about-inner {
         grid-template-columns: 1fr;
       }
+      .about-right {
+        position: static;
+      }
       .about-photo {
         margin: 16px 0 0 0;
       }
     }
 
     @media (max-width: 600px) {
-      .hero-middle-inner {
-        gap: 24px;
-        font-size: 11px;
-      }
       .hero-header { padding-inline: 16px; }
       .hero-bottom { padding-inline: 16px; gap: 40px; }
       .work-next-arrow { right: 16px; }
@@ -390,8 +402,6 @@
           <span>Digital Storytelling</span>
           <span>Interface Narratives</span>
           <span>Speculative Aesthetics</span>
-
-          <!-- duplicate loop -->
           <span>Brand Systems</span>
           <span>Visual Experiments</span>
           <span>Digital Storytelling</span>
@@ -414,27 +424,25 @@
       <div class="work-strip-wrapper">
         <button class="work-prev-arrow" type="button" aria-label="Previous"></button>
         <div class="work-strip">
-
           <a class="work-item" href="work-01.html">
-  <div class="work-label">01</div>
-  <img src="slides/Slide1.PNG" alt="Project 01 Slide 1" />
-</a>
+            <div class="work-label">01</div>
+            <img src="slides/Slide1.PNG" alt="Project 01 Slide 1" />
+          </a>
 
           <a class="work-item" href="/404.html">
             <div class="work-label">02</div>
-            <img src="https://picsum.photos/seed/ai-project-02/480/320" />
+            <img src="https://picsum.photos/seed/ai-project-02/480/320" alt="" />
           </a>
 
           <a class="work-item" href="/404.html">
             <div class="work-label">03</div>
-            <img src="https://picsum.photos/seed/ai-project-03/480/320" />
+            <img src="https://picsum.photos/seed/ai-project-03/480/320" alt="" />
           </a>
 
           <a class="work-item" href="/404.html">
             <div class="work-label">04</div>
-            <img src="https://picsum.photos/seed/ai-project-04/480/320" />
+            <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="" />
           </a>
-
         </div>
         <button class="work-next-arrow" type="button" aria-label="Next"></button>
       </div>
@@ -444,130 +452,128 @@
 
   <!-- ABOUT / RESUME SECTION -->
   <section class="about" id="about">
-  <div class="about-inner">
-    <!-- LEFT COLUMN: About + Experience + Education + Skills + Contact -->
-    <div>
-      <div class="about-subtitle">Profile</div>
-      <h2 class="about-heading">About Jazen Brown</h2>
+    <div class="about-inner">
+      <!-- LEFT COLUMN -->
+      <div>
+        <div class="about-subtitle">Profile</div>
+        <h2 class="about-heading">About Obie Brown</h2>
 
-      <p class="about-body">
-        I am a creative and driven fashion marketing student with experience in
-        content creation, trend research, visual communication, and retail strategy.
-        I like moving between concept and execution, building visuals and stories
-        that feel honest, culturally aware, and actually useful for the brands I
-        work with.
-      </p>
+        <p class="about-body">
+          I am a creative and driven fashion marketing student with experience in
+          content creation, trend research, visual communication, and retail strategy.
+          I move between concept and execution, building visuals and stories
+          that feel honest, culturally aware, and useful for the brands I work with.
+        </p>
 
-      <!-- EXPERIENCE -->
-      <div class="resume-block">
-        <div class="resume-item">
-          <div class="resume-title">Buyer</div>
-          <div class="resume-meta">Buffalo Exchange &mdash; Minneapolis, MN &vert; 03/2025 &ndash; Present</div>
-          <div class="resume-text">
-            Select secondhand and vintage apparel based on demand and trends, build
-            visual displays, communicate pricing to customers, and collaborate with
-            the team on seasonal assortments and floor changes.
+        <!-- EXPERIENCE -->
+        <div class="resume-block">
+          <div class="resume-item">
+            <div class="resume-title">Buyer</div>
+            <div class="resume-meta">Buffalo Exchange | Minneapolis, MN | 03/2025 – Present</div>
+            <div class="resume-text">
+              Select secondhand and vintage apparel based on demand and trends, build
+              visual displays, communicate pricing to customers, and collaborate with
+              the team on seasonal assortments and floor changes.
+            </div>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-title">Social Media Assistant</div>
+            <div class="resume-meta">Nordstrom, Mall of America | 03/2024 – 06/2024</div>
+            <div class="resume-text">
+              Planned and posted content across channels, designed graphic assets,
+              partnered with influencers, engaged with comments and messages, and
+              supported campaign ideas with the marketing team.
+            </div>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-title">Creative Director Intern</div>
+            <div class="resume-meta">Planet i | Remote, New York | 01/2024 – 06/2024</div>
+            <div class="resume-text">
+              Researched fashion and consumer trends, built customer profiles, sketched
+              product ideas, and contributed concepts for branded content and marketing
+              campaigns in a collaborative studio environment.
+            </div>
+          </div>
+
+          <div class="resume-item">
+            <div class="resume-meta">
+              Time between Nordstrom and Buffalo Exchange includes a study abroad
+              semester in Taiwan focused on design, culture, and language.
+            </div>
           </div>
         </div>
 
-        <div class="resume-item">
-          <div class="resume-title">Social Media Assistant</div>
-          <div class="resume-meta">Nordstrom, Mall of America &vert; 03/2024 &ndash; 06/2024</div>
-          <div class="resume-text">
-            Planned and posted content across channels, designed graphic assets in
-            Canva and Adobe tools, partnered with influencers, engaged with comments
-            and messages, and supported campaign ideas with the marketing team.
+        <!-- EDUCATION -->
+        <div class="education-block">
+          <div class="education-item">
+            <div class="education-title">LIM College</div>
+            <div class="education-meta">New York, NY | 2023 – 2026</div>
+            <div class="education-text">
+              Bachelor of Business Administration, Fashion Marketing, with focus on brand
+              strategy, digital marketing, and consumer behavior.
+            </div>
+          </div>
+
+          <div class="education-item">
+            <div class="education-title">Le Fashion Lab</div>
+            <div class="education-meta">Atlanta, GA | 2020 – 2022</div>
+            <div class="education-text">
+              Fashion design and garment construction coursework, including pattern
+              making, sewing, and experimental design projects.
+            </div>
           </div>
         </div>
 
-        <div class="resume-item">
-          <div class="resume-title">Creative Director Intern</div>
-          <div class="resume-meta">Planet i &mdash; Remote, New York &vert; 01/2024 &ndash; 06/2024</div>
+        <!-- SKILLS -->
+        <div class="resume-block">
+          <div class="resume-title">Skills</div>
           <div class="resume-text">
-            Researched fashion and consumer trends, built customer profiles, sketched
-            product ideas, and contributed concepts for branded content and marketing
-            campaigns in a collaborative studio environment.
+            Social media content creation<br>
+            Canva, Photoshop, Illustrator<br>
+            Content writing and captions<br>
+            Email marketing basics<br>
+            Visual merchandising<br>
+            Trend and customer research<br>
+            Creative direction and styling
           </div>
         </div>
 
-        <div class="resume-item">
-          <div class="resume-meta">
-            Note: Time between Nordstrom and Buffalo Exchange includes a study abroad
-            semester in Taiwan focused on design, culture, and language.
+        <!-- CONTACT -->
+        <div class="contact-block">
+          <div class="contact-label">Contact</div>
+          <div>E-mail: <a href="mailto:jazenbrownjr@gmail.com">jazenbrownjr@gmail.com</a></div>
+          <div>Phone: <a href="tel:+16782008121">678-200-8121</a></div>
+
+          <div class="social-row">
+            <span class="contact-label">Social</span>
+            <a class="social-logo" href="#">
+              <img src="instagram-logo.svg" alt="Instagram logo" />
+            </a>
+            <a class="social-logo" href="#">
+              <img src="behance-logo.svg" alt="Behance logo" />
+            </a>
+            <a class="social-logo" href="#">
+              <img src="linkedin-logo.svg" alt="LinkedIn logo" />
+            </a>
           </div>
         </div>
       </div>
 
-      <!-- EDUCATION -->
-      <div class="education-block">
-        <div class="education-item">
-          <div class="education-title">LIM College</div>
-          <div class="education-meta">New York, NY &vert; 2023 &ndash; 2026</div>
-          <div class="education-text">
-            Bachelor of Business Administration, Fashion Marketing. Focus on brand
-            strategy, digital marketing, and consumer behavior within the fashion
-            industry.
-          </div>
-        </div>
-
-        <div class="education-item">
-          <div class="education-title">Le Fashion Lab</div>
-          <div class="education-meta">Atlanta, GA &vert; 2020 &ndash; 2022</div>
-          <div class="education-text">
-            Fashion design and garment construction coursework, including pattern
-            making, sewing, and experimental design projects.
-          </div>
-        </div>
-      </div>
-
-      <!-- SKILLS -->
-      <div class="resume-block">
-        <div class="resume-title">Skills</div>
-        <div class="resume-text">
-          Social media content creation<br>
-          Canva, Photoshop, Illustrator<br>
-          Content writing and captions<br>
-          Email marketing basics<br>
-          Visual merchandising<br>
-          Trend and customer research<br>
-          Creative direction and styling
-        </div>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="contact-block">
-        <div class="contact-label">Contact</div>
-        <div>E-mail: <a href="mailto:jazenbrownjr@gmail.com">jazenbrownjr@gmail.com</a></div>
-        <div>Phone: <a href="tel:+16782008121">678-200-8121</a></div>
-
-        <div class="social-row">
-          <span class="contact-label">Social</span>
-          <a class="social-logo" href="#">
-            <img src="instagram-logo.svg" alt="Instagram logo" />
-          </a>
-          <a class="social-logo" href="#">
-            <img src="behance-logo.svg" alt="Behance logo" />
-          </a>
-          <a class="social-logo" href="#">
-            <img src="linkedin-logo.svg" alt="LinkedIn logo" />
-          </a>
+      <!-- RIGHT COLUMN, STICKY IMAGE -->
+      <div class="about-right">
+        <img
+          class="about-photo"
+          src="https://picsum.photos/seed/portrait-ai/600/800"
+          alt="Portrait placeholder"
+        />
+        <div class="about-photo-caption">
+          Portrait placeholder, replace with your own image
         </div>
       </div>
     </div>
-
-    <!-- RIGHT COLUMN: PORTRAIT -->
-    <div>
-      <img
-        class="about-photo"
-        src="https://picsum.photos/seed/portrait-ai/600/800"
-        alt="Portrait placeholder"
-      />
-      <div class="about-photo-caption">
-        Portrait placeholder &mdash; replace with your own image
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -597,3 +603,4 @@
 
 </body>
 </html>
+```
