@@ -34,6 +34,35 @@
       text-decoration: none;
     }
 
+    /* HEADER – match home page structure */
+
+    .hero-header {
+      font-family: "Source Code Pro", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      display: flex;
+      align-items: center;
+      padding: 18px 24px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-name {
+      margin-right: 12px;
+      white-space: nowrap;
+    }
+
+    .hero-tag {
+      margin-left: auto;
+      margin-right: 80px;
+      white-space: nowrap;
+    }
+
+    .hero-year {
+      margin-right: 24px;
+      white-space: nowrap;
+    }
+
     /* Top layout */
 
     .project-shell {
@@ -308,6 +337,13 @@
 
 <body>
 
+  <!-- HEADER (same structure as home, with Obie Brown clickable) -->
+  <header class="hero-header">
+    <a class="hero-name" href="index.html">Obie Brown</a>
+    <span class="hero-tag">Portfolio</span>
+    <span class="hero-year">2026</span>
+  </header>
+
   <main class="project-shell">
     <!-- Left column text -->
     <aside class="project-left">
@@ -348,64 +384,64 @@
         <span class="thumb-index">001</span>
         <img src="slides/Slide1.PNG" alt="" />
       </div>
-      <!-- 02 Slide2 -->
+
+      <!-- 02 Slide3 (Slide2 removed) -->
       <div class="thumb-item" data-slide="1">
         <span class="thumb-index">002</span>
-        <img src="slides/Slide2.PNG" alt="" />
-      </div>
-      <!-- 03 Slide3 -->
-      <div class="thumb-item" data-slide="2">
-        <span class="thumb-index">003</span>
         <img src="slides/Slide3.PNG" alt="" />
       </div>
-      <!-- 04 Slide4 -->
-      <div class="thumb-item" data-slide="3">
-        <span class="thumb-index">004</span>
+
+      <!-- 03 Slide4 -->
+      <div class="thumb-item" data-slide="2">
+        <span class="thumb-index">003</span>
         <img src="slides/Slide4.PNG" alt="" />
       </div>
-      <!-- 05 Customer Persona -->
-      <div class="thumb-item" data-slide="4">
-        <span class="thumb-index">005</span>
+
+      <!-- 04 Customer Persona -->
+      <div class="thumb-item" data-slide="3">
+        <span class="thumb-index">004</span>
         <img src="slides/Customer Persona.png" alt="" />
       </div>
-      <!-- 06 Slide5 -->
-      <div class="thumb-item" data-slide="5">
-        <span class="thumb-index">006</span>
+
+      <!-- 05 Slide5 -->
+      <div class="thumb-item" data-slide="4">
+        <span class="thumb-index">005</span>
         <img src="slides/Slide5.PNG" alt="" />
       </div>
-      <!-- 07 Slide6 -->
-      <div class="thumb-item" data-slide="6">
-        <span class="thumb-index">007</span>
+
+      <!-- 06 Slide6 -->
+      <div class="thumb-item" data-slide="5">
+        <span class="thumb-index">006</span>
         <img src="slides/Slide6.PNG" alt="" />
       </div>
-      <!-- 08 Slide7 -->
-      <div class="thumb-item" data-slide="7">
-        <span class="thumb-index">008</span>
+
+      <!-- 07 Slide7 -->
+      <div class="thumb-item" data-slide="6">
+        <span class="thumb-index">007</span>
         <img src="slides/Slide7.PNG" alt="" />
       </div>
-      <!-- 09 Slide8 -->
-      <div class="thumb-item" data-slide="8">
-        <span class="thumb-index">009</span>
+
+      <!-- 08 Slide8 -->
+      <div class="thumb-item" data-slide="7">
+        <span class="thumb-index">008</span>
         <img src="slides/Slide8.PNG" alt="" />
       </div>
-      <!-- 10 E-mail Marketing -->
-      <div class="thumb-item" data-slide="9">
-        <span class="thumb-index">010</span>
+
+      <!-- 09 E-mail Marketing -->
+      <div class="thumb-item" data-slide="8">
+        <span class="thumb-index">009</span>
         <img src="slides/E-mail Marketing.png" alt="" />
       </div>
-      <!-- 11 Social Media Calendar -->
-      <div class="thumb-item" data-slide="10">
-        <span class="thumb-index">011</span>
+
+      <!-- 10 Social Media Calendar -->
+      <div class="thumb-item" data-slide="9">
+        <span class="thumb-index">010</span>
         <img src="slides/Social Media Calendar.png" alt="" />
       </div>
-      <!-- 12 Slide9 -->
-      <div class="thumb-item" data-slide="11">
-        <span class="thumb-index">012</span>
-        <img src="slides/Slide9.PNG" alt="" />
-      </div>
-      <!-- 13 Slide10 -->
-      <div class="thumb-item" data-slide="12">
-        <span class="thumb-index">013</span>
+
+      <!-- 11 Slide10 (second to last slide removed: Slide9) -->
+      <div class="thumb-item" data-slide="10">
+        <span class="thumb-index">011</span>
         <img src="slides/Slide10.PNG" alt="" />
       </div>
     </aside>
@@ -419,24 +455,26 @@
         <div class="project-title">Project 01: America Is An Absent Father</div>
         <div class="project-subtitle">Brand And Launch Presentation</div>
         <p class="project-description">
-          Placeholder description for the AAAF launch deck. Use this space to
-          explain how the presentation frames the brand, how the narrative
-          builds from problem to solution, and how each slide balances clarity
-          with attitude. You can highlight how the satire, layout, and pacing
-          work together to feel like a fashion editorial while still being a
-          precise marketing document.
+          This deck introduces AAAF as a sharp, self aware streetwear brand that
+          treats the presentation itself like a campaign object. The opening slides
+          frame “America Is An Absent Father” as both a thesis and a tension that
+          the brand is responding to, then move through audience insights, a
+          customer persona, and a product story that feels closer to an editorial
+          than a pitch. The final slides translate that point of view into execution,
+          including launch sequencing, an email funnel, and a social content calendar
+          that shows how the brand would actually live in people’s feeds.
         </p>
       </div>
 
       <div>
         <div class="skills-title">Skills Used</div>
         <ul class="skills-list">
-          <li>Brand positioning and narrative</li>
-          <li>Presentation design and slide systems</li>
-          <li>Typography hierarchy for screen</li>
-          <li>Art direction for mood imagery</li>
-          <li>Campaign strategy structuring</li>
-          <li>Research, references, and citations</li>
+          <li>Brand narrative and campaign concept development</li>
+          <li>Customer persona design and audience insight mapping</li>
+          <li>Presentation layout, pacing, and visual hierarchy</li>
+          <li>Art direction for product and mood driven slide imagery</li>
+          <li>E mail marketing flow and message sequencing</li>
+          <li>Social media calendar planning across channels</li>
         </ul>
       </div>
     </div>
