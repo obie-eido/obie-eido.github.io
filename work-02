@@ -1,0 +1,506 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project 01 – Obie Brown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper: #f5f3ee;
+      --ink: #111111;
+      --muted: #8c8a84;
+      --accent: #ff3b3b;
+      --border: #d7d3c9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Source Code Pro", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: var(--paper);
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER (match home page) */
+    .hero-header {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      display: flex;
+      align-items: center;
+      padding: 18px 24px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-name {
+      margin-right: 12px;
+      white-space: nowrap;
+    }
+
+    .hero-tag {
+      margin-left: auto;
+      margin-right: 80px;
+      white-space: nowrap;
+    }
+
+    .hero-year {
+      margin-right: 24px;
+      white-space: nowrap;
+    }
+
+    /* MAIN LAYOUT */
+    .project-shell {
+      min-height: 100vh;
+      display: flex;
+      padding: 32px 40px;
+    }
+
+    .project-left {
+      flex: 0 0 18%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-right: 24px;
+      border-right: 1px solid var(--border);
+    }
+
+    .project-left-meta {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-left-body {
+      margin-top: 32px;
+      font-size: 11px;
+      line-height: 1.7;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .project-left-body span {
+      display: block;
+    }
+
+    .project-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 0 40px;
+    }
+
+    .project-main-frame {
+      position: relative;
+      width: 100%;
+      max-width: 760px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .project-main-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ARROWS */
+    .project-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid #b6b1a4;
+      background: rgba(248,246,242,0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease-in-out;
+    }
+
+    .project-arrow::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .project-arrow.prev {
+      left: 18px;
+    }
+
+    .project-arrow.prev::before {
+      border-width: 7px 11px 7px 0;
+      border-color: transparent var(--ink) transparent transparent;
+    }
+
+    .project-arrow.next {
+      right: 18px;
+    }
+
+    .project-arrow.next::before {
+      border-width: 7px 0 7px 11px;
+      border-color: transparent transparent transparent var(--ink);
+    }
+
+    .project-center:hover .project-arrow {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* THUMBNAILS */
+    .project-right {
+      flex: 0 0 14%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      padding-left: 16px;
+      border-left: 1px solid var(--border);
+    }
+
+    .thumb-item {
+      width: 72px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .thumb-item img {
+      width: 100%;
+      display: block;
+    }
+
+    .thumb-index {
+      position: absolute;
+      left: -26px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: left center;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .thumb-item.is-active {
+      border-color: var(--ink);
+    }
+
+    /* DETAILS */
+    .project-details {
+      padding: 56px 40px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-details-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 56px;
+    }
+
+    .project-title {
+      font-size: 15px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .project-subtitle {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .project-description {
+      font-size: 13px;
+      line-height: 1.9;
+      color: #44413a;
+    }
+
+    .skills-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .skills-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .skills-list li {
+      display: flex;
+      gap: 10px;
+    }
+
+    .skills-list li::before {
+      content: "•";
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .project-shell {
+        flex-direction: column;
+        padding: 24px 20px 32px;
+      }
+
+      .project-left {
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+      }
+
+      .project-center {
+        padding: 24px 0;
+      }
+
+      .project-right {
+        flex-direction: row;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        margin-top: 16px;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      .thumb-item {
+        width: 80px;
+      }
+
+      .thumb-index {
+        left: 4px;
+        top: 4px;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .project-details-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .project-details {
+        padding-inline: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="hero-header">
+    <a class="hero-name" href="index.html">Obie Brown</a>
+    <span class="hero-tag">Portfolio</span>
+    <span class="hero-year">2026</span>
+  </header>
+
+  <main class="project-shell">
+    <!-- LEFT COLUMN -->
+    <aside class="project-left">
+      <div>
+        <div class="project-left-meta">
+          OBIE BROWN ARCHIVE / PROJECT 01 / POWERPOINT STUDY
+        </div>
+        <div class="project-left-body">
+          <span>AMERICA IS AN ABSENT FATHER</span>
+          <span>MONOCHROME PRESENTATION SYSTEM</span>
+          <span>HONEST FASHION STRATEGY</span>
+        </div>
+      </div>
+
+      <div class="project-left-meta">
+        CASE STUDY FILE: AAAF_PRODUCT_LAUNCH.PPTX
+      </div>
+    </aside>
+
+    <!-- CENTER MAIN SLIDE -->
+    <section class="project-center">
+      <div class="project-main-frame">
+        <img
+          class="project-main-image"
+          src="slides/Slide1.PNG"
+          alt="Project slide"
+        />
+      </div>
+
+      <button class="project-arrow prev" type="button" aria-label="Previous slide"></button>
+      <button class="project-arrow next" type="button" aria-label="Next slide"></button>
+    </section>
+
+    <!-- RIGHT THUMBNAILS -->
+    <aside class="project-right">
+      <!-- 01 Slide1 -->
+      <div class="thumb-item is-active" data-slide="0">
+        <span class="thumb-index">001</span>
+        <img src="slides/Slide1.PNG" alt="" />
+      </div>
+
+      <!-- 02 Slide3 (Slide2 removed) -->
+      <div class="thumb-item" data-slide="1">
+        <span class="thumb-index">002</span>
+        <img src="slides/Slide3.PNG" alt="" />
+      </div>
+
+      <!-- 03 Slide4 -->
+      <div class="thumb-item" data-slide="2">
+        <span class="thumb-index">003</span>
+        <img src="slides/Slide4.PNG" alt="" />
+      </div>
+
+      <!-- 04 Customer Persona -->
+      <div class="thumb-item" data-slide="3">
+        <span class="thumb-index">004</span>
+        <img src="slides/Customer Persona.png" alt="" />
+      </div>
+
+      <!-- 05 Slide5 -->
+      <div class="thumb-item" data-slide="4">
+        <span class="thumb-index">005</span>
+        <img src="slides/Slide5.PNG" alt="" />
+      </div>
+
+      <!-- 06 Slide6 -->
+      <div class="thumb-item" data-slide="5">
+        <span class="thumb-index">006</span>
+        <img src="slides/Slide6.PNG" alt="" />
+      </div>
+
+      <!-- 07 Slide7 -->
+      <div class="thumb-item" data-slide="6">
+        <span class="thumb-index">007</span>
+        <img src="slides/Slide7.PNG" alt="" />
+      </div>
+
+      <!-- 08 Slide8 -->
+      <div class="thumb-item" data-slide="7">
+        <span class="thumb-index">008</span>
+        <img src="slides/Slide8.PNG" alt="" />
+      </div>
+
+      <!-- 09 E-mail Marketing -->
+      <div class="thumb-item" data-slide="8">
+        <span class="thumb-index">009</span>
+        <img src="slides/E-mail Marketing.png" alt="" />
+      </div>
+
+      <!-- 10 Social Media Calendar -->
+      <div class="thumb-item" data-slide="9">
+        <span class="thumb-index">010</span>
+        <img src="slides/Social Media Calendar.png" alt="" />
+      </div>
+
+      <!-- 11 Slide10 -->
+      <div class="thumb-item" data-slide="10">
+        <span class="thumb-index">011</span>
+        <img src="slides/Slide10.PNG" alt="" />
+      </div>
+    </aside>
+  </main>
+
+  <!-- DETAILS + SKILLS -->
+  <section class="project-details" id="details">
+    <div class="project-details-inner">
+      <div>
+        <div class="project-title">Project 01: America Is An Absent Father</div>
+        <div class="project-subtitle">Brand And Launch Presentation</div>
+        <p class="project-description">
+          The deck begins to introduce AAAF's core brand thesis while providing
+          evidence of "America is an absent father" as the primary narrative.
+          It presents audience insights, a customer persona, and a targeted product
+          story, then moves into execution through a launch sequence, email
+          marketing flow, and a social media content calendar that shows how
+          AAAF would use its channels in practice.
+        </p>
+      </div>
+
+      <div>
+        <div class="skills-title">Skills Used</div>
+        <ul class="skills-list">
+          <li>Brand Narrative</li>
+          <li>Audience Insights</li>
+          <li>Presentation Design</li>
+          <li>Art Direction</li>
+          <li>Email Strategy</li>
+          <li>Social Planning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const mainImage = document.querySelector(".project-main-image");
+      const thumbs = Array.from(document.querySelectorAll(".thumb-item"));
+      const prev = document.querySelector(".project-arrow.prev");
+      const next = document.querySelector(".project-arrow.next");
+
+      if (!mainImage || !thumbs.length || !prev || !next) return;
+
+      const slides = thumbs.map(t =>
+        t.querySelector("img").getAttribute("src")
+      );
+
+      let index = 0;
+
+      function setSlide(i) {
+        index = (i + slides.length) % slides.length;
+        mainImage.setAttribute("src", slides[index]);
+        thumbs.forEach((t, idx) => {
+          t.classList.toggle("is-active", idx === index);
+        });
+      }
+
+      // initial
+      setSlide(0);
+
+      thumbs.forEach((thumb, i) => {
+        thumb.addEventListener("click", () => setSlide(i));
+      });
+
+      next.addEventListener("click", () => setSlide(index + 1));
+      prev.addEventListener("click", () => setSlide(index - 1));
+    });
+  </script>
+</body>
+</html>
