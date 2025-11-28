@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -45,7 +46,7 @@
     .hero-tag { margin-left: auto; margin-right: 80px; white-space: nowrap; }
     .hero-year { margin-right: 24px; white-space: nowrap; }
 
-    /* LAYOUT */
+    /* MAIN LAYOUT */
     .project-shell {
       min-height: 100vh;
       display: flex;
@@ -156,12 +157,14 @@
       border: 1px solid var(--border);
       cursor: pointer;
       position: relative;
+      background: #faf8f4;
     }
 
     .thumb-item img { width: 100%; display: block; }
+
     .thumb-item.is-active { border-color: var(--ink); }
 
-    /* DETAILS */
+    /* DETAILS SECTION */
     .project-details {
       padding: 56px 40px 80px;
       border-top: 1px solid var(--border);
@@ -216,6 +219,124 @@
       color: var(--ink);
       margin-right: 6px;
     }
+
+    /* PHOTOSHOOT COLLAGE */
+    .project-photos {
+      padding: 40px 40px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-photos-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .photos-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .photos-heading {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 18px;
+    }
+
+    .photos-copy {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #4a463f;
+      max-width: 640px;
+      margin-bottom: 28px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+    }
+
+    .photo-card {
+      position: relative;
+      background: #f9f7f3;
+      border: 1px solid var(--border);
+      padding: 6px;
+      overflow: hidden;
+      transform-origin: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .photo-card img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .photo-card.tilt-left {
+      transform: rotate(-1.8deg);
+    }
+
+    .photo-card.tilt-right {
+      transform: rotate(1.8deg);
+    }
+
+    .photo-card.centered {
+      transform: rotate(0deg);
+    }
+
+    .photo-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+    }
+
+    @media (max-width: 1024px) {
+      .project-shell {
+        flex-direction: column;
+        padding: 24px 20px 32px;
+      }
+
+      .project-left {
+        flex: 0 0 auto;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+      }
+
+      .project-center {
+        padding: 24px 0;
+      }
+
+      .project-right {
+        flex-direction: row;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding-left: 0;
+        margin-top: 16px;
+        justify-content: flex-start;
+        overflow-x: auto;
+      }
+
+      .thumb-item { width: 80px; }
+    }
+
+    @media (max-width: 720px) {
+      .project-details-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .project-details,
+      .project-photos {
+        padding-inline: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -233,79 +354,89 @@
   <aside class="project-left">
     <div>
       <div class="project-left-meta">
-        OBIE BROWN ARCHIVE / PROJECT 02 / BRAND + PHOTOSHOOT STUDY
+        OBIE BROWN ARCHIVE / PROJECT 02 / BRAND AND EDITORIAL
       </div>
 
       <div class="project-left-body">
         <span>FALLING DIAMONDS</span>
         <span>CONCEPTUAL BRAND</span>
-        <span>CREATED IN TAIWAN</span>
+        <span>CREATED IN TAIPEI</span>
         <span>SIX MONTH DEVELOPMENT</span>
       </div>
     </div>
     <div class="project-left-meta">CASE STUDY FILE: FALLING_DIAMONDS</div>
   </aside>
 
-  <!-- CENTER SLIDE -->
+  <!-- CENTER SLIDE, ONLY BRAND DECK -->
   <section class="project-center">
     <div class="project-main-frame">
-      <img class="project-main-image"
-           src="slides-falling-diamonds/1.jpg"
-           alt="Main slide">
+      <img
+        class="project-main-image"
+        src="slides-falling-diamonds/1.png"
+        alt="Falling Diamonds deck slide"
+      />
     </div>
 
-    <button class="project-arrow prev" aria-label="Previous"></button>
-    <button class="project-arrow next" aria-label="Next"></button>
+    <button class="project-arrow prev" type="button" aria-label="Previous slide"></button>
+    <button class="project-arrow next" type="button" aria-label="Next slide"></button>
   </section>
 
-  <!-- THUMBNAILS -->
+  <!-- BRAND DECK THUMBNAILS ONLY -->
   <aside class="project-right">
-
-    <!-- BRAND DEVELOPMENT -->
-    <div class="thumb-item is-active" data-slide="0"><img src="slides-falling-diamonds/1.png"></div>
-    <div class="thumb-item" data-slide="1"><img src="slides-falling-diamonds/2.png"></div>
-    <div class="thumb-item" data-slide="2"><img src="slides-falling-diamonds/3.png"></div>
-    <div class="thumb-item" data-slide="3"><img src="slides-falling-diamonds/4.png"></div>
-    <div class="thumb-item" data-slide="4"><img src="slides-falling-diamonds/5.png"></div>
-    <div class="thumb-item" data-slide="5"><img src="slides-falling-diamonds/6.png"></div>
-    <div class="thumb-item" data-slide="6"><img src="slides-falling-diamonds/7.png"></div>
-    <div class="thumb-item" data-slide="7"><img src="slides-falling-diamonds/8.png"></div>
-    <div class="thumb-item" data-slide="8"><img src="slides-falling-diamonds/9.png"></div>
-    <div class="thumb-item" data-slide="9"><img src="slides-falling-diamonds/10.png"></div>
-
-    <!-- PHOTOSHOOT SECTION -->
-    <div class="thumb-item" data-slide="11"><img src="slides-falling-diamonds/Capture One Catalog0005.jpg"></div>
-    <div class="thumb-item" data-slide="12"><img src="slides-falling-diamonds/Capture One Catalog0016.jpg"></div>
-    <div class="thumb-item" data-slide="13"><img src="slides-falling-diamonds/Capture One Catalog0061.jpg"></div>
-    <div class="thumb-item" data-slide="14"><img src="slides-falling-diamonds/Capture One Catalog0188.jpg"></div>
-    <div class="thumb-item" data-slide="15"><img src="slides-falling-diamonds/Capture One Catalog0207.jpg"></div>
-    <div class="thumb-item" data-slide="16"><img src="slides-falling-diamonds/Capture One Catalog7464.jpg"></div>
-    <div class="thumb-item" data-slide="17"><img src="slides-falling-diamonds/Capture One Catalog7639.jpg"></div>
-    <div class="thumb-item" data-slide="18"><img src="slides-falling-diamonds/Capture One Catalog7650.jpg"></div>
-    <div class="thumb-item" data-slide="19"><img src="slides-falling-diamonds/Capture One Catalog7676.jpg"></div>
-    <div class="thumb-item" data-slide="20"><img src="slides-falling-diamonds/Capture One Catalog7714.jpg"></div>
-    <div class="thumb-item" data-slide="21"><img src="slides-falling-diamonds/Capture One Catalog7856.jpg"></div>
-    <div class="thumb-item" data-slide="22"><img src="slides-falling-diamonds/Capture One Catalog7896.jpg"></div>
-    <div class="thumb-item" data-slide="23"><img src="slides-falling-diamonds/Capture One Catalog7910.jpg"></div>
-    <div class="thumb-item" data-slide="24"><img src="slides-falling-diamonds/Capture One Catalog7920.jpg"></div>
-    <div class="thumb-item" data-slide="25"><img src="slides-falling-diamonds/Capture One Catalog7997.jpg"></div>
-
+    <div class="thumb-item is-active" data-slide="0">
+      <img src="slides-falling-diamonds/1.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="1">
+      <img src="slides-falling-diamonds/2.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="2">
+      <img src="slides-falling-diamonds/3.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="3">
+      <img src="slides-falling-diamonds/4.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="4">
+      <img src="slides-falling-diamonds/5.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="5">
+      <img src="slides-falling-diamonds/6.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="6">
+      <img src="slides-falling-diamonds/7.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="7">
+      <img src="slides-falling-diamonds/8.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="8">
+      <img src="slides-falling-diamonds/9.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="9">
+      <img src="slides-falling-diamonds/10.png" alt="">
+    </div>
+    <div class="thumb-item" data-slide="10">
+      <img src="slides-falling-diamonds/11.png" alt="">
+    </div>
   </aside>
 </main>
 
+<!-- CASE STUDY TEXT -->
 <section class="project-details">
   <div class="project-details-inner">
     <div>
       <div class="project-title">Falling Diamonds</div>
-      <div class="project-subtitle">Conceptual Brand Created in Taipei</div>
+      <div class="project-subtitle">Conceptual Brand Created In Taipei</div>
       <p class="project-description">
-        Falling Diamonds was developed over six months during a fashion design program
-        in Taiwan. The project combines graphic design, technical garment construction,
-        pattern drafting, brand development, and conceptual storytelling.
-        The full deck includes early brand strategy slides, visual identity layouts,
-        clothing construction references, and a full editorial-style photoshoot shot
-        on location in Taipei. The project demonstrates an understanding of fashion
-        branding, visual direction, fabrication logic, and narrative design.
+        Falling Diamonds was developed over six months in a fashion design course in Taiwan.
+        The work blends graphic identity, garment design, pattern drafting, and narrative
+        branding into a single system. The deck walks through early concept sketches,
+        logo and wordmark exploration, fabric and silhouette ideas, and the visual language
+        that holds the collection together.
+      </p>
+      <p class="project-description">
+        The goal was to treat the brand as a story that can move from flat graphics
+        to physical garments to images on a screen, without losing its mood or point
+        of view. The final outcome is a tight set of visuals that can support lookbooks,
+        line sheets, and campaign assets.
       </p>
     </div>
 
@@ -316,9 +447,72 @@
         <li>Graphic Design</li>
         <li>Fashion Design</li>
         <li>Pattern Making</li>
-        <li>Editorial Direction</li>
         <li>Technical Illustration</li>
+        <li>Editorial Direction</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTOSHOOT COLLAGE SECTION -->
+<section class="project-photos">
+  <div class="project-photos-inner">
+    <div class="photos-title">Lookbook Output</div>
+    <div class="photos-heading">Falling Diamonds Photoshoot</div>
+    <p class="photos-copy">
+      The photoshoot translates the Falling Diamonds system into lived images,
+      focusing on silhouette, texture, and mood. These frames were shot in Taipei
+      and styled to echo the graphic language of the deck, so the brand story stays
+      consistent from sketch to finished image.
+    </p>
+
+    <div class="photo-grid">
+      <!-- You can reorder these as you like for composition -->
+      <div class="photo-card tilt-left">
+        <img src="slides-falling-diamonds/Capture One Catalog0005.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-right">
+        <img src="slides-falling-diamonds/Capture One Catalog0016.jpg" alt="">
+      </div>
+      <div class="photo-card centered">
+        <img src="slides-falling-diamonds/Capture One Catalog0061.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-left">
+        <img src="slides-falling-diamonds/Capture One Catalog0118.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-right">
+        <img src="slides-falling-diamonds/Capture One Catalog0207.jpg" alt="">
+      </div>
+      <div class="photo-card centered">
+        <img src="slides-falling-diamonds/Capture One Catalog7464.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-left">
+        <img src="slides-falling-diamonds/Capture One Catalog7639.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-right">
+        <img src="slides-falling-diamonds/Capture One Catalog7650.jpg" alt="">
+      </div>
+      <div class="photo-card centered">
+        <img src="slides-falling-diamonds/Capture One Catalog7676.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-left">
+        <img src="slides-falling-diamonds/Capture One Catalog7714.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-right">
+        <img src="slides-falling-diamonds/Capture One Catalog7856.jpg" alt="">
+      </div>
+      <div class="photo-card centered">
+        <img src="slides-falling-diamonds/Capture One Catalog7896.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-left">
+        <img src="slides-falling-diamonds/Capture One Catalog7910.jpg" alt="">
+      </div>
+      <div class="photo-card tilt-right">
+        <img src="slides-falling-diamonds/Capture One Catalog7920.jpg" alt="">
+      </div>
+      <div class="photo-card centered">
+        <img src="slides-falling-diamonds/Capture One Catalog7997.jpg" alt="">
+      </div>
     </div>
   </div>
 </section>
@@ -326,11 +520,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const mainImage = document.querySelector(".project-main-image");
-  const thumbs = [...document.querySelectorAll(".thumb-item")];
+  const thumbs = Array.from(document.querySelectorAll(".thumb-item"));
   const prev = document.querySelector(".project-arrow.prev");
   const next = document.querySelector(".project-arrow.next");
 
-  const slides = thumbs.map(t => t.querySelector("img").src);
+  if (!mainImage || !thumbs.length || !prev || !next) return;
+
+  const slides = thumbs.map(t => t.querySelector("img").getAttribute("src"));
   let index = 0;
 
   function setSlide(i) {
