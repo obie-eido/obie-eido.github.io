@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Work 03 – Sketchbook Collages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts to match main site -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #101010;
+      --accent: #ff3b3b;
+      --text-muted: #b4b4b4;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-dark);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-family: "Source Code Pro", monospace;
+    }
+
+    .back-link {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid #333333;
+      border-radius: 999px;
+      padding: 6px 14px;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .page-title-block {
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .page-label {
+      font-family: "Source Code Pro", monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .page-title {
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .page-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      max-width: 520px;
+    }
+
+    .sketchbook-wrapper {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    /* Swiper as sketchbook */
+
+    .sketchbook-swiper {
+      width: 100%;
+      max-width: 720px;
+      height: min(80vh, 520px);
+    }
+
+    .sketchbook-swiper .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050505;
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.75);
+    }
+
+    .sketchbook-swiper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #f5f5f5;
+    }
+
+    .page-indicator {
+      margin-top: 12px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: "Source Code Pro", monospace;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: row;
+        gap: 12px;
+      }
+      .page-title {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>Obie Brown / Work 03</div>
+    <a href="index.html#top" class="back-link">Back to portfolio</a>
+  </header>
+
+  <div class="page-title-block">
+    <div class="page-label">Project 03</div>
+    <div class="page-title">Sketchbook Collages</div>
+    <div class="page-subtitle">
+      Interactive flipbook of sketchbook collage spreads. Click or tap the arrows to flip through the pages, like turning a physical book.
+    </div>
+  </div>
+
+  <div class="sketchbook-wrapper">
+    <div class="swiper sketchbook-swiper">
+      <div class="swiper-wrapper">
+        <!-- Page 1 -->
+        <div class="swiper-slide">
+          <img src="collages/collage-01.jpg" alt="Collage page 1" />
+        </div>
+        <!-- Page 2 -->
+        <div class="swiper-slide">
+          <img src="collages/collage-02.jpg" alt="Collage page 2" />
+        </div>
+        <!-- Page 3 -->
+        <div class="swiper-slide">
+          <img src="collages/collage-03.jpg" alt="Collage page 3" />
+        </div>
+        <!-- Page 4 -->
+        <div class="swiper-slide">
+          <img src="collages/collage-04.jpg" alt="Collage page 4" />
+        </div>
+      </div>
+
+      <!-- Navigation arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="page-indicator" id="page-indicator">
+      Page 1 of 4
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    const sketchbookSwiper = new Swiper(".sketchbook-swiper", {
+      effect: "flip",
+      grabCursor: true,
+      loop: false,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      on: {
+        slideChange: function () {
+          const indicator = document.getElementById("page-indicator");
+          const current = sketchbookSwiper.realIndex + 1;
+          const total = sketchbookSwiper.slides.length;
+          indicator.textContent = "Page " + current + " of " + total;
+        },
+      },
+    });
+  </script>
+</body>
+</html>
