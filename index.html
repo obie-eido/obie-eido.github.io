@@ -125,6 +125,29 @@
       color: #ffffff;
     }
 
+    /* iOS only Profile button */
+
+    .profile-jump {
+      display: none; /* default hidden */
+      margin-top: 16px;
+      font-family: "Source Code Pro", monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid #444444;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: transparent;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    body.ios .profile-jump {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     /* Work strip: default horizontal layout */
 
     .work-strip-wrapper {
@@ -176,7 +199,7 @@
       border: 1px solid #2a2a2a;
     }
 
-    /* iOS override: stack works vertically, no horizontal scroll */
+    /* iOS override: stack works vertically, keep image dimensions */
 
     body.ios .hero-bottom {
       flex-direction: column;
@@ -202,12 +225,6 @@
 
     body.ios .work-item {
       min-width: 100%;
-    }
-
-    body.ios .work-item img {
-      width: 100%;
-      height: auto;
-      max-height: none;
     }
 
     /* ABOUT */
@@ -481,6 +498,11 @@
           with an emphasis on clear structure, sharp concepts, and experimental but
           readable layouts.
         </p>
+
+        <!-- iOS only button -->
+        <a href="#about" class="profile-jump">
+          Profile (↓)
+        </a>
       </div>
 
       <div class="work-strip-wrapper">
