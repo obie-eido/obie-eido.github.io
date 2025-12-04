@@ -56,19 +56,6 @@
       align-items: center;
       padding-inline: 24px;
     }
-    .work-strip {
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
-    
-      /* Add these for iOS */
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x;
-    }
 
     .hero-name { margin-right: 12px; white-space: nowrap; }
     .hero-tag { margin-left: auto; margin-right: 80px; white-space: nowrap; }
@@ -145,7 +132,7 @@
       min-width: 260px;
     }
 
-    .work-strip {
+        .work-strip {
       display: flex;
       gap: 18px;
       overflow-x: auto;
@@ -153,9 +140,12 @@
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
       scroll-behavior: smooth;
+    
+      /* iPhone + iPad scrolling fix */
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x;
     }
 
-    .work-strip::-webkit-scrollbar { display: none; }
 
     .work-item {
       scroll-snap-align: start;
