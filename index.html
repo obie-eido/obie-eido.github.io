@@ -37,15 +37,16 @@
 
     /* HERO */
 
-    .hero {
+       .hero {
       min-height: 100vh;
       background: var(--bg-dark);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden;  REMOVE THIS, it blocks iOS scrolling */
     }
+
 
     .hero-header {
       font-family: "Source Code Pro", monospace;
@@ -132,19 +133,25 @@
       min-width: 260px;
     }
 
-        .work-strip {
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none;
-      scroll-behavior: smooth;
-    
-      /* iPhone + iPad scrolling fix */
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x;
-    }
+   .work-strip {
+  display: flex;
+  gap: 18px;
+  overflow-x: scroll;        /* force horizontal scrolling */
+  overflow-y: hidden;        /* prevent vertical scroll inside */
+  padding-bottom: 6px;
+
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;  /* required for iPhone/iPad momentum scroll */
+  touch-action: pan-x;                /* tell iOS this area scrolls sideways */
+}
+
+/* optional: hide scrollbar on WebKit (iPhone/iPad/Safari) */
+.work-strip::-webkit-scrollbar {
+  display: none;
+}
+
 
 
     .work-item {
