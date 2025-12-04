@@ -23,12 +23,11 @@
   }
 
   body {
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg-dark);
-  color: #ffffff;
-  overflow-x: hidden; /* stop whole page from sliding sideways */
-}
-
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg-dark);
+    color: #ffffff;
+    overflow-x: hidden; /* stop whole page from sliding sideways */
+  }
 
   a {
     color: inherit;
@@ -39,15 +38,15 @@
 
   /* HERO */
 
- .hero {
-  min-height: 100vh;
-  background: var(--bg-dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-}
+  .hero {
+    min-height: 100vh;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    /* no overflow hidden here, so child scroll works on iOS */
+  }
 
   .hero-header {
     font-family: "Source Code Pro", monospace;
@@ -129,45 +128,26 @@
   /* Work strip */
 
   .work-strip-wrapper {
-  position: relative;
-  flex: 0 0 55%;
-  min-width: 260px;
+    position: relative;
+    flex: 0 0 55%;
+    min-width: 260px;
 
-  /* make this the only horizontal scroll area */
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
-  scrollbar-width: none;
-}
-
-.work-strip-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-.work-strip {
-  display: flex;
-  gap: 18px;
-  padding-bottom: 6px;
-}
-
-
-
-    /* horizontal scroll area */
+    /* this is the horizontal scroll container */
     overflow-x: auto;
     overflow-y: hidden;
-
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-
-    /* iOS friendliness */
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
-    overscroll-behavior-x: contain;
+    scrollbar-width: none;
   }
 
-  .work-strip::-webkit-scrollbar {
+  .work-strip-wrapper::-webkit-scrollbar {
     display: none;
+  }
+
+  .work-strip {
+    display: flex;
+    gap: 18px;
+    padding-bottom: 6px;
   }
 
   .work-item {
@@ -195,11 +175,6 @@
     object-position: center;
     border-radius: 0;
     border: 1px solid #2a2a2a;
-  }
-
-  .work-prev-arrow::before {
-    border-width: 7px 11px 7px 0;
-    border-color: transparent #ffffff transparent transparent;
   }
 
   /* ABOUT */
@@ -433,10 +408,9 @@
   @media (max-width: 600px) {
     .hero-header { padding-inline: 16px; }
     .hero-bottom { padding-inline: 16px; gap: 40px; }
-    .work-next-arrow { right: 16px; }
-    .work-prev-arrow { left: 16px; }
   }
 </style>
+
 
 </head>
 
