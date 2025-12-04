@@ -133,7 +133,7 @@
   flex: 0 0 55%;
   min-width: 260px;
 
-  /* wrapper is now the scroll container */
+  /* make this the only horizontal scroll area */
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -145,12 +145,12 @@
   display: none;
 }
 
-  .work-strip {
-  display: inline-flex; /* make content wider than wrapper */
+.work-strip {
+  display: flex;
   gap: 18px;
   padding-bottom: 6px;
-  /* no overflow here anymore */
 }
+
 
 
     /* horizontal scroll area */
@@ -195,47 +195,6 @@
     object-position: center;
     border-radius: 0;
     border: 1px solid #2a2a2a;
-  }
-
-  .work-next-arrow,
-  .work-prev-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 34px;
-    height: 34px;
-    border-radius: 999px;
-    border: 1px solid #444444;
-    background: rgba(5, 5, 5, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease-in-out;
-  }
-
-  .work-next-arrow { right: 24px; }
-  .work-prev-arrow { left: 24px; }
-
-  .work-strip-wrapper:hover .work-next-arrow,
-  .work-strip-wrapper:hover .work-prev-arrow {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .work-next-arrow::before,
-  .work-prev-arrow::before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
-
-  .work-next-arrow::before {
-    border-width: 7px 0 7px 11px;
-    border-color: transparent transparent transparent #ffffff;
   }
 
   .work-prev-arrow::before {
@@ -519,32 +478,30 @@
         </p>
       </div>
 
-      <div class="work-strip-wrapper">
-        <button class="work-prev-arrow" type="button" aria-label="Previous"></button>
-        <div class="work-strip">
-          <a class="work-item" href="work-01.html">
-            <div class="work-label">01</div>
-            <img src="slides/Slide1.PNG" alt="Project 01 Slide 1" />
-          </a>
+<div class="work-strip-wrapper">
+  <div class="work-strip">
+    <a class="work-item" href="work-01.html">
+      <div class="work-label">01</div>
+      <img src="slides/Slide1.PNG" alt="Project 01 Slide 1" />
+    </a>
 
-          <a class="work-item" href="work-02.html">
-  <div class="work-label">02</div>
-  <img src="slides-falling-diamonds/Capture One Catalog0188.jpg" alt="Falling Diamonds Photo" />
-</a>
+    <a class="work-item" href="work-02.html">
+      <div class="work-label">02</div>
+      <img src="slides-falling-diamonds/Capture One Catalog0188.jpg" alt="Falling Diamonds Photo" />
+    </a>
 
-          <a class="work-item" href="work-03.html">
-  <div class="work-label">03</div>
-  <img src="collages/Collage 1.jpg" alt="Collage project 03 preview" />
-</a>
+    <a class="work-item" href="work-03.html">
+      <div class="work-label">03</div>
+      <img src="collages/Collage 1.jpg" alt="Collage project 03 preview" />
+    </a>
 
+    <a class="work-item" href="/404.html">
+      <div class="work-label">04</div>
+      <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="Placeholder project 04" />
+    </a>
+  </div>
+</div>
 
-          <a class="work-item" href="/404.html">
-            <div class="work-label">04</div>
-            <img src="https://picsum.photos/seed/ai-project-04/480/320" alt="Placeholder project 04" />
-          </a>
-        </div>
-        <button class="work-next-arrow" type="button" aria-label="Next"></button>
-      </div>
     </div>
   </section>
 
@@ -817,34 +774,6 @@
       </div>
     </div>
   </section>
-
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const wrapper = document.querySelector(".work-strip-wrapper");
-    const strip = document.querySelector(".work-strip");
-    const nextArrow = document.querySelector(".work-next-arrow");
-    const prevArrow = document.querySelector(".work-prev-arrow");
-
-    if (!wrapper || !strip || !nextArrow || !prevArrow) return;
-
-    function getStep() {
-      const item = strip.querySelector(".work-item");
-      if (!item) return 260;
-      const style = window.getComputedStyle(strip);
-      const gap = parseFloat(style.columnGap || style.gap || "18") || 18;
-      return item.getBoundingClientRect().width + gap;
-    }
-
-    nextArrow.addEventListener("click", () => {
-      wrapper.scrollBy({ left: getStep(), behavior: "smooth" });
-    });
-
-    prevArrow.addEventListener("click", () => {
-      wrapper.scrollBy({ left: -getStep(), behavior: "smooth" });
-    });
-  });
-</script>
-
 
 </body>
 </html>
