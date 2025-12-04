@@ -27,7 +27,7 @@
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: var(--bg-dark);
       color: #ffffff;
-      overflow-x: hidden; /* page itself never scrolls horizontally */
+      overflow-x: hidden; /* page never slides sideways */
     }
 
     a {
@@ -125,7 +125,7 @@
       color: #ffffff;
     }
 
-    /* Work strip: this is the ONLY horizontal scroll area */
+    /* Work strip: default horizontal layout */
 
     .work-strip-wrapper {
       position: relative;
@@ -136,7 +136,7 @@
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      touch-action: pan-x; /* hint to browsers: this is for horizontal panning */
+      touch-action: pan-x;
     }
 
     .work-strip-wrapper::-webkit-scrollbar {
@@ -174,6 +174,40 @@
       object-position: center;
       border-radius: 0;
       border: 1px solid #2a2a2a;
+    }
+
+    /* iOS override: stack works vertically, no horizontal scroll */
+
+    body.ios .hero-bottom {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    body.ios .hero-description {
+      max-width: 100%;
+      flex: 0 0 auto;
+    }
+
+    body.ios .work-strip-wrapper {
+      overflow: visible;
+      scrollbar-width: auto;
+      touch-action: auto;
+    }
+
+    body.ios .work-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    body.ios .work-item {
+      min-width: 100%;
+    }
+
+    body.ios .work-item img {
+      width: 100%;
+      height: auto;
+      max-height: none;
     }
 
     /* ABOUT */
@@ -746,55 +780,14 @@
   </section>
 
   <script>
-    // Lock horizontal gestures on the hero strip so the page does not move with them on iOS
-    document.addEventListener("DOMContentLoaded", function () {
-      const wrapper = document.querySelector(".work-strip-wrapper");
-      if (!wrapper) return;
-
-      let startX = 0;
-      let startY = 0;
-      let isHorizontal = false;
-
-      wrapper.addEventListener(
-        "touchstart",
-        function (e) {
-          if (!e.touches || e.touches.length === 0) return;
-          const touch = e.touches[0];
-          startX = touch.clientX;
-          startY = touch.clientY;
-          isHorizontal = false;
-        },
-        { passive: true }
-      );
-
-      wrapper.addEventListener(
-        "touchmove",
-        function (e) {
-          if (!e.touches || e.touches.length === 0) return;
-          const touch = e.touches[0];
-          const dx = touch.clientX - startX;
-          const dy = touch.clientY - startY;
-
-          // Decide if this gesture is horizontal or vertical
-          if (!isHorizontal) {
-            if (Math.abs(dx) > Math.abs(dy)) {
-              isHorizontal = true;
-            } else {
-              // Let vertical scroll happen
-              return;
-            }
-          }
-
-          // If we decided it's horizontal, prevent page scroll and move the strip
-          if (isHorizontal) {
-            e.preventDefault();
-            wrapper.scrollLeft -= dx;
-            startX = touch.clientX;
-          }
-        },
-        { passive: false } // must be false so preventDefault works on iOS
-      );
-    });
+    // Add .ios to body for iPhone and iPad only
+    (function () {
+      var ua = window.navigator.userAgent || "";
+      var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+      if (isIOS) {
+        document.body.classList.add("ios");
+      }
+    })();
   </script>
 </body>
 </html>
